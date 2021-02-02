@@ -64,51 +64,76 @@
           <a class="nav-item nav-link" href="#Comments">Comments</a>
           <a class="nav-item nav-link" href="#Activities">Activities</a>
           <a class="nav-item nav-link" href="#About">About</a>
+          <div class="theme-changer">
+            <i
+              class="fas fa-toggle-off toggle-icon"
+              onclick="toggleTheme()"
+            ></i>
+          </div>
         </div>
       </div>
     </nav>
-    <section>
-      <section class="home" id="home">
-        <div class="container-fluid">
-          <div class="home-content">
-            <div class="home-title">
-              <h1 class="home-h1">Dilan Ramirez</h1>
-              <h3 class="home-h3">Computer Scientist</h3>
-              <h4 class="home-h4">Web Developer</h4>
+    <section class="home" id="home">
+      <div class="container-fluid">
+        <div class="home-content">
+          <div class="home-title">
+            <h1 class="home-h1">Dilan Ramirez</h1>
+            <h3 class="home-h3">Computer Scientist</h3>
+            <h4 class="home-h4">Web Developer</h4>
+          </div>
+          <div class="bottom-arrow">
+            <p><i class="arrow down"></i></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="Education" class="education">
+      <div class="container education-container">
+        <div class="education-content">
+          <h1 class="title education">Education</h1>
+          <div class="row">
+            <div class="col-sm">
+              <h3 class="education-school">University of Texas at El Paso</h3>
+              <h5 class="education-major">Computer Science</h5>
+              <p class="education-gpa">GPA: 3.52</p>
+              <p class="education-date">January 2019 - Present</p>
             </div>
-            <div class="bottom-arrow">
-              <p><i class="arrow down"></i></p>
+            <div class="col-sm">
+              <h3 class="education-school">El Paso Community College</h3>
+              <h5 class="education-major">Computer Science</h5>
+              <p class="education-gpa">GPA: 3.52</p>
+              <p class="education-date">January 2018 - December 2018</p>
+            </div>
+            <div class="col-sm">
+              <h3 class="education-school">
+                Universidad Popular Autonoma del Estado de Puebla
+              </h3>
+              <h5 class="education-major">Computer and Systems Engineering</h5>
+              <p class="education-gpa">GPA: 3.0</p>
+              <p class="education-date">August 2014 - May 2017</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </section>
-    <section id="education">
-      <h1 class="title">Education</h1>
-    </section>
-    <section id="Skills">
+    <section id="Skills" class="skills">
       <h1 class="title">Skills</h1>
     </section>
-    <section id="Projects">
+    <section id="Projects" class="projects">
       <h1 class="title">Projects</h1>
     </section>
-    <section id="Presentations">
+    <section id="Presentations" class="presentations">
       <h1 class="title">Presentations</h1>
     </section>
-    <section id="Comments">
+    <section id="Comments" class="comments">
       <h1 class="title">Comments</h1>
     </section>
-    <section id="Activities">
+    <section id="Activities" class="activities">
       <h1 class="title">Activities</h1>
     </section>
-    <section id="About">
+    <section id="About" class="about">
       <h1 class="title">About</h1>
     </section>
-
-    <div class="theme-changer">
-      <i class="fas fa-toggle-off toggle-icon" onclick="toggleTheme()"></i>
-      <!-- <input type="checkbox" name="theme" /> -->
-    </div>
 
     <script>
       gsap.from(".home-h1", { opacity: 0, duration: 3, x: -150 });
