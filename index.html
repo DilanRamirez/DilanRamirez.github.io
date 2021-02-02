@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dilan Ramirez</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#">Home</a>
+          <a class="nav-item nav-link" href="#education">Education</a>
+          <a class="nav-item nav-link" href="#">Skills</a>
+          <a class="nav-item nav-link" href="#">Projects</a>
+          <a class="nav-item nav-link" href="#">Presentations</a>
+          <a class="nav-item nav-link" href="#">Comments</a>
+          <a class="nav-item nav-link" href="#">Activities</a>
+          <a class="nav-item nav-link" href="#">About</a>
+        </div>
+      </div>
+    </nav>
+    <section>
+      <section class="home" id="home">
+        <div class="container-fluid">
+          <div class="home-content">
+            <div class="home-title">
+              <h1 class="home-h1">Dilan Ramirez</h1>
+              <h3 class="home-h3">Computer Scientist</h3>
+              <h4 class="home-h4">Web Developer</h4>
+            </div>
+            <div class="bottom-arrow">
+              <p><i class="arrow down"></i></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section id="education">
+      <h1>Education</h1>
+    </section>
+
+    <div class="theme-changer">
+      <i class="fas fa-toggle-off toggle-icon" onclick="toggleTheme()"></i>
+      <!-- <input type="checkbox" name="theme" /> -->
+    </div>
+
+    <script>
+      gsap.from(".home-h1", { opacity: 0, duration: 3, x: -150 });
+      gsap.from(".home-h3", { opacity: 0, duration: 2, x: -150, delay: 1 });
+      gsap.from(".home-h4", { opacity: 0, duration: 2, x: -150, delay: 2 });
+      gsap.from(".bottom-arrow", {
+        duration: 2.5,
+        ease: "slow(0.7, 0.7, false)",
+        y: -200,
+      });
+
+      // Toogle theme
+      function toggleTheme() {
+        $(".theme-changer").click(function () {
+          const icon = $(this).find("i");
+          if (icon.hasClass("fa-toggle-off")) {
+            icon.addClass("fa-toggle-on").removeClass("fa-toggle-off");
+            document.documentElement.setAttribute("data-theme", "dark");
+          } else if (icon.hasClass("fa-toggle-on")) {
+            document.documentElement.setAttribute("data-theme", "light");
+            icon.addClass("fa-toggle-off").removeClass("fa-toggle-on");
+          }
+        });
+
+        $(".navbar-light").toggleClass("navbar-dark");
+      }
+    </script>
+  </body>
+</html>
