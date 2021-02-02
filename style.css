@@ -116,6 +116,7 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   font-size: 64px;
   color: var(--primary) !important;
+  margin-bottom: 10%;
 }
 
 /* Home */
@@ -215,14 +216,40 @@ body::-webkit-scrollbar-thumb {
   color: var(--secondary);
 }
 
+/* Skills */
+.skill-shape {
+  height: 300px;
+  width: 300px;
+}
+
+.skill {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 15px;
+}
+
+.skill-img {
+  max-height: 150px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dark-img {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
 @media screen and (max-width: 600px) {
   section {
     height: 100vh;
     width: 100%;
-    /* overflow-x: hidden; */
   }
   .title {
-    font-size: 22px;
+    font-size: 32px;
+    font-weight: bold;
   }
 
   /* Home */
@@ -237,5 +264,48 @@ body::-webkit-scrollbar-thumb {
   }
   .bottom-arrow {
     bottom: 3% !important;
+  }
+
+  /* Education */
+  .education-school {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px !important;
+  }
+  .education-major {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px !important;
+  }
+  .education-gpa {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 10px !important;
+  }
+  .education-date {
+    font-size: 12px;
+    text-align: center;
+  }
+  .col-sm {
+    margin-bottom: 20px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* skills */
+  .skill {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary);
+    padding: 15px;
+  }
+
+  .skill-img {
+    max-height: 100px;
   }
 }
