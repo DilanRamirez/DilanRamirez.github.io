@@ -48,6 +48,20 @@ section {
   padding: 0.5rem 1rem;
 }
 
+.navbar-collapse {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 /* Icon theme */
 
 .theme-changer {
@@ -68,6 +82,26 @@ section {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
+/* General */
+
+#education,
+#Skills,
+#Projects,
+#Presentations,
+#Comments,
+#Activities,
+#About {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  font-size: 64px;
+  color: var(--primary) !important;
+}
+
+/* Home */
 .home {
   position: absolute;
 
