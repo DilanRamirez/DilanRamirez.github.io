@@ -208,7 +208,7 @@
         .from(".education-title", {
           x: -200,
           opacity: 0,
-          duration: 1.5,
+          duration: 1,
           ease: Bounce.easeOut,
         })
         .from(".schools", { x: -200, opacity: 0, duration: 1 }, "-=1");
@@ -225,15 +225,23 @@
         .from(".skill-title", {
           x: -200,
           opacity: 0,
-          duration: 1.5,
+          duration: 1,
           ease: Bounce.easeOut,
         })
-        .from(".skill-1", { x: -200, opacity: 0, duration: 1 }, "-=1")
-        .from(".skill-2", { x: -200, opacity: 0, duration: 1, delay: 1 }, "-=1")
-        .from(".skill-3", { x: -200, opacity: 0, duration: 1, delay: 1 }, "-=1")
+        .from(".skill-1", { x: -200, opacity: 0, duration: 0.5 }, "-=1")
+        .from(
+          ".skill-2",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1 },
+          "-=1"
+        )
+        .from(
+          ".skill-3",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
+          "-=1"
+        )
         .from(
           ".skill-4",
-          { x: -200, opacity: 0, duration: 1, delay: 1 },
+          { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
           "-=1"
         );
 
