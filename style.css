@@ -361,6 +361,6 @@ body::-webkit-scrollbar-thumb {
 
   /* projects */
   .projects {
-    margin-top: 100%;
+    /* margin-top: 100%; */
   }
 }
