@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dilan Ramirez</title>
-    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -20,11 +19,6 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
@@ -41,8 +35,23 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+      integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+      integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <link rel="stylesheet" href="style.css" />
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
       <button
@@ -179,7 +188,12 @@
         <h1 class="title projects-title">Projects</h1>
         <div class="row">
           <div class="col-sm covid1">
-            <div class="card" style="width: 18rem">
+            <div
+              class="card"
+              style="width: 18rem"
+              data-toggle="modal"
+              data-target="#covidModal"
+            >
               <img
                 class="card-img-top"
                 src="./assets/img/COVID-19-DashBorad.png"
@@ -199,7 +213,12 @@
             </div>
           </div>
           <div class="col-sm covid2">
-            <div class="card" style="width: 18rem">
+            <div
+              class="card"
+              data-toggle="modal"
+              data-target="#covidCountryModal"
+              style="width: 18rem"
+            >
               <img
                 class="card-img-top"
                 src="./assets/img/COVID-10-Country.png"
@@ -219,7 +238,12 @@
             </div>
           </div>
           <div class="col-sm condiciones">
-            <div class="card" style="width: 18rem">
+            <div
+              class="card"
+              data-toggle="modal"
+              data-target="#condicionesModal"
+              style="width: 18rem"
+            >
               <img
                 class="card-img-top"
                 src="./assets/img/Condiciones-admosfericas.png"
@@ -241,7 +265,12 @@
         </div>
         <div class="row projects-2">
           <div class="col-sm turistic">
-            <div class="card" style="width: 18rem">
+            <div
+              class="card"
+              data-toggle="modal"
+              data-target="#turisticModal"
+              style="width: 18rem"
+            >
               <img
                 class="card-img-top"
                 src="./assets/img/turistic.png"
@@ -260,7 +289,12 @@
             </div>
           </div>
           <div class="col-sm weekly">
-            <div class="card" style="width: 18rem">
+            <div
+              class="card"
+              data-toggle="modal"
+              data-target="#mealsModal"
+              style="width: 18rem"
+            >
               <img
                 class="card-img-top"
                 src="./assets/img/meals.png"
@@ -280,7 +314,12 @@
             </div>
           </div>
           <div class="col-sm foodFinder">
-            <div class="card" style="width: 18rem">
+            <div
+              class="card"
+              data-toggle="modal"
+              data-target="#foodModal"
+              style="width: 18rem"
+            >
               <img
                 class="card-img-top"
                 src="./assets/img/foodFinder.png"
@@ -315,7 +354,351 @@
       <h1 class="title">About</h1>
     </section>
 
+    <!-- Modals -->
+    <!-- Covid-19 -->
+    <div
+      class="modal fade"
+      id="covidModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="covidModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="text-center ml-auto modal-title">COVID-19 Dashboard</h3>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="w-100 modal-img"
+              src="./assets/img/COVID-19-DashBorad.png"
+              alt="Card image cap"
+            />
+            <h5 class="modal-about"><b>About</b></h5>
+            <p class="modal-description">
+              This is one of my favorite projects I worked on because I was
+              really interested on dashboards, so I decide to develop one
+              dashboard with COVID-19 data. Because all this situation we are
+              struggling with, there is a lot of free COVID-19 data. Therefore,
+              I started working on this app. This app is only developed using
+              HTML, JavaScript, CSS, bootstrap, and jQuery. <br />
+              <br />
+              Another reason I wanted to develop this app was because I wanted
+              to learn Bootstrap. The app uses data from different APIs, so we
+              can find global data, a search tool to find data by country, some
+              chart to visualize the global data and by country, a tip card to
+              remember wash your hands, a interactive map with all the cases by
+              country, and a table with the cases by state in the U.S.<br /><br />
+              I learned a lot while developing this app. I like the final
+              product with the finish look. The only problem is that sometimes,
+              the app get blocked by one of the APIs and the information is not
+              shown.
+            </p>
+            <h5 class="modal-about"><b>Used</b></h5>
+            <div class="row icons-modal">
+              <div class="col-">
+                <i
+                  ><img
+                    src="https://img.icons8.com/color/48/000000/html-5.png"
+                    alt="html"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    src="https://img.icons8.com/ultraviolet/48/000000/css.png"
+                    alt="css"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    src="https://img.icons8.com/color/48/000000/bootstrap.png"
+                    alt="bootstrap"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    style="height: 48px"
+                    src="./assets/img/icons/jquery.png"
+                    alt="python"
+                /></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Covid-19 Country -->
+    <div
+      class="modal fade"
+      id="covidCountryModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="covidCountryModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="text-center ml-auto modal-title">
+              COVID-19 Country Tracker
+            </h3>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="w-100 modal-img"
+              src="./assets/img/COVID-10-Country.png"
+              alt="Card image cap"
+            />
+            <h5 class="modal-about"><b>About</b></h5>
+            <p class="modal-description">
+              COVID-19 Country Tracker is a React JS web application develop by
+              Dilan Ramirez. It uses data from mathdroid/covid-19-api and
+              restcountries.eu. <br /><br />The main objective of this web
+              application is to learn and practice my React JS skills and
+              throughout components and prop states. It alse uses some chart
+              vizualizations from Chart JS. <br /><br />The animations within
+              the app are from Lottie JS which is a JavaScript library
+              incorporated in this case to React. Moreover, I use Material UI
+              library to incorporate this Material Design to my application.
+            </p>
+            <h5 class="modal-about"><b>Used</b></h5>
+            <div class="row icons-modal">
+              <div class="col-">
+                <i
+                  ><img
+                    src="https://img.icons8.com/color/48/000000/html-5.png"
+                    alt="html"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    src="https://img.icons8.com/ultraviolet/48/000000/css.png"
+                    alt="css"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    src="https://img.icons8.com/color/48/000000/javascript.png"
+                    alt="bootstrap"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    style="height: 48px"
+                    src="https://material-ui.com/static/logo.png"
+                    alt="bootstrap"
+                /></i>
+              </div>
+              <div class="col-">
+                <i
+                  ><img
+                    style="height: 48px"
+                    src="https://img.icons8.com/color/48/000000/react-native.png"
+                    alt="react"
+                /></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Condiciones Admosfericas -->
+    <div
+      class="modal fade"
+      id="condicionesModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="condicionesModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="text-center ml-auto modal-title">
+              CONDICIONES ATMOSFERICAS
+            </h3>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="w-100 modal-img"
+              src="./assets/img/Condiciones-admosfericas.png"
+              alt="Card image cap"
+            />
+            <h5 class="modal-about"><b>About</b></h5>
+            <p class="modal-description">
+              This React JS web application use data from https://datos.gob.mx/
+              to display in a interactive 3D map different weather conditions
+              from different states in Mexico. <br /><br />This project was more
+              advanced than the previous ones because here I was using Esri API
+              to generate the 3D map and draw all the symbols, pop-ups, and
+              points in the map. <br /><br />Moreover, I used a select form to
+              choose and display a certain place's weather data. I like this app
+              because I implemented all the knowledge gotten in my current job,
+              and all the knowledge I learned from React to mix it and create a
+              new web application.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Turistic Places -->
+    <div
+      class="modal fade"
+      id="turisticModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="turisticModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="text-center ml-auto modal-title">Turistic Places</h3>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="w-100 modal-img"
+              src="./assets/img/turistic.png"
+              alt="Card image cap"
+            />
+            <h5 class="modal-about"><b>About</b></h5>
+            <p class="modal-description">
+              Lugares Turisticos is a web application develop by Dilan Ramirez.
+              The main objective of this app is to help visitors and turist to
+              find the best turistic places in Puebla, Mexico. <br /><br />
+              It uses data from datos.cdmx.gob.mx; therefore, it is has official
+              data from Puebla's goverment. This is a PWA to, so people can
+              download this web application on their smarthphones.
+              <br /><br />It is just developed using HTML, JavaScript, CSS,
+              jQuery, and Leaflet JS. Place's cards are generated using
+              JavaScript and bootstrap.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Weekly Meals-->
+    <div
+      class="modal fade"
+      id="mealsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="mealsModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="text-center ml-auto modal-title">Weekly Meals</h3>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="w-100 modal-img"
+              src="./assets/img/meals.png"
+              alt="Card image cap"
+            />
+            <h5 class="modal-about"><b>About</b></h5>
+            <p class="modal-description">
+              Progressive web application that helps users to choose
+              daily/weekly meals but also add and share their own with other
+              users.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Food Finder-->
+    <div
+      class="modal fade"
+      id="foodModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="foodModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="text-center ml-auto modal-title">Food Finder</h3>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="w-100 modal-img"
+              src="./assets/img/foodFinder.png"
+              alt="Card image cap"
+            />
+            <h5 class="modal-about"><b>About</b></h5>
+            <p class="modal-description">
+              Progressive web application that helps people to find and add
+              their favorite restaurants. The cool part is that you can add a
+              new restaurant by using your current location or by adding an
+              address. <br /><br />
+              Not all small food places are in Google Maps, so this app will
+              contain all the favorite small places people want.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
+      $(document).ready(function () {
+        $("#MyModal").modal();
+      });
       // Gsap
       gsap.from(".home-h1", { opacity: 0, duration: 3, x: -150 });
       gsap.from(".home-h3", { opacity: 0, duration: 2, x: -150, delay: 1 });
