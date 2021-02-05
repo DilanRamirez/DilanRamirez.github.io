@@ -134,9 +134,12 @@
             </div>
           </div>
         </div>
-        <div class="bottom-arrow">
+        <div class="bottom-arrow2 education-arrow">
           <p>
-            <i class="arrow down" onclick="window.location = '#Education'"></i>
+            <i
+              class="fas fa-chevron-down"
+              onclick="window.location = '#Skills'"
+            ></i>
           </p>
         </div>
       </div>
@@ -182,8 +185,16 @@
           </div>
         </div>
       </div>
+      <div class="bottom-arrow2 skill-arrow">
+        <p>
+          <i
+            class="fas fa-chevron-down"
+            onclick="window.location = '#Projects'"
+          ></i>
+        </p>
+      </div>
     </section>
-    <section id="Projects" class="projects">
+    <section id="Projects">
       <div class="container-fluid projects project-container">
         <h1 class="title projects-title">Projects</h1>
         <div class="row">
@@ -338,6 +349,14 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="bottom-arrow3">
+          <p>
+            <i
+              class="fas fa-chevron-down"
+              onclick="window.location = '#Presentations'"
+            ></i>
+          </p>
         </div>
       </div>
     </section>
@@ -724,7 +743,18 @@
           duration: 1,
           ease: Bounce.easeOut,
         })
-        .from(".schools", { x: -200, opacity: 0, duration: 1 }, "-=1");
+        .from(".schools", { x: -200, opacity: 0, duration: 1 }, "-=1")
+        .from(
+          ".education-arrow",
+          {
+            x: -200,
+            opacity: 0,
+            duration: 0.5,
+            delay: 1.2,
+            ease: Bounce.easeOut,
+          },
+          "-=1"
+        );
 
       // skills
       let skills = gsap.timeline({
@@ -755,6 +785,17 @@
         .from(
           ".skill-4",
           { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
+          "-=1"
+        )
+        .from(
+          ".skill-arrow",
+          {
+            x: -200,
+            opacity: 0,
+            duration: 0.5,
+            delay: 1.2,
+            ease: Bounce.easeOut,
+          },
           "-=1"
         );
 

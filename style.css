@@ -120,8 +120,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 #Skills {
-  height: 50vh !important;
-  margin-bottom: 25%;
+  height: 90vh !important;
+  margin-bottom: 10%;
 }
 .title {
   text-align: center;
@@ -149,6 +149,29 @@ body::-webkit-scrollbar-thumb {
 }
 .bottom-arrow2 {
   position: relative;
+}
+
+.bottom-arrow2 {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-arrow2 p {
+  color: var(--secondary);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.bottom-arrow3 {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+.bottom-arrow3 p {
+  color: var(--secondary);
+  font-size: 28px;
+  cursor: pointer;
 }
 
 /* Modals */
@@ -317,6 +340,10 @@ body::-webkit-scrollbar-thumb {
   margin-right: auto;
 }
 
+#Projects {
+  height: 125vh !important;
+}
+
 .card {
   position: relative;
   margin: 10px 10px;
@@ -353,8 +380,8 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
-.projects-2 {
-  margin-top: 50px;
+.projects-title {
+  margin-bottom: 5% !important;
 }
 
 @media screen and (max-width: 600px) {
@@ -404,7 +431,7 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
   }
   .col-sm {
-    margin-bottom: 20px !important;
+    margin-bottom: 0px !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -417,11 +444,11 @@ body::-webkit-scrollbar-thumb {
     font-size: 22px;
     font-weight: 600;
     color: var(--primary);
-    padding: 15px;
+    padding: 10px;
   }
 
   .skill-img {
-    max-height: 100px;
+    max-height: 80px;
   }
 
   #Skills {
@@ -431,7 +458,7 @@ body::-webkit-scrollbar-thumb {
 
   /* projects */
   #Projects {
-    height: 380vh !important;
+    height: 330vh !important;
   }
   .projects {
     /* margin-top: 100%; */
