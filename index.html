@@ -125,6 +125,11 @@
             </div>
           </div>
         </div>
+        <div class="bottom-arrow">
+          <p>
+            <i class="arrow down" onclick="window.location = '#Education'"></i>
+          </p>
+        </div>
       </div>
     </section>
     <section id="Skills" class="skills">
@@ -171,9 +176,9 @@
     </section>
     <section id="Projects" class="projects">
       <div class="container-fluid projects project-container">
-        <h1 class="title">Projects</h1>
+        <h1 class="title projects-title">Projects</h1>
         <div class="row">
-          <div class="col-sm">
+          <div class="col-sm covid1">
             <div class="card" style="width: 18rem">
               <img
                 class="card-img-top"
@@ -181,7 +186,7 @@
                 alt="Card image cap"
               />
               <div class="card-body">
-                <h5 class="card-title">COVID-19-Dashboard</h5>
+                <h5 class="card-title">COVID-19 Dashboard</h5>
                 <p class="card-text">
                   Web application that shows statistics from COVID-19 using data
                   from an API
@@ -193,18 +198,18 @@
               </div>
             </div>
           </div>
-          <div class="col-sm">
+          <div class="col-sm covid2">
             <div class="card" style="width: 18rem">
               <img
                 class="card-img-top"
-                src="./assets/img/COVID-19-DashBorad.png"
+                src="./assets/img/COVID-10-Country.png"
                 alt="Card image cap"
               />
               <div class="card-body">
-                <h5 class="card-title">COVID-19 Mexico City Tracker</h5>
+                <h5 class="card-title">COVID-19 Country Tracker</h5>
                 <p class="card-text">
-                  Web application that shows statistics from COVID-19 using data
-                  from an API
+                  React Web application that shows case statistics by country
+                  selection
                 </p>
                 <div class="card-buttons">
                   <a href="#" class="btn btn-primary">Visit</a>
@@ -213,11 +218,11 @@
               </div>
             </div>
           </div>
-          <div class="col-sm">
+          <div class="col-sm condiciones">
             <div class="card" style="width: 18rem">
               <img
                 class="card-img-top"
-                src="./assets/img/COVID-19-DashBorad.png"
+                src="./assets/img/Condiciones-admosfericas.png"
                 alt="Card image cap"
               />
               <div class="card-body">
@@ -225,6 +230,67 @@
                 <p class="card-text">
                   React app that vizualize Mexico weather conditions using data
                   from an API
+                </p>
+                <div class="card-buttons">
+                  <a href="#" class="btn btn-primary">Visit</a>
+                  <a href="#" class="btn btn-primary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row projects-2">
+          <div class="col-sm turistic">
+            <div class="card" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="./assets/img/turistic.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Turistic Places</h5>
+                <p class="card-text">
+                  Web application that shows Tourist places in Puebla, Mexico.
+                </p>
+                <div class="card-buttons">
+                  <a href="#" class="btn btn-primary">Visit</a>
+                  <a href="#" class="btn btn-primary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm weekly">
+            <div class="card" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="./assets/img/meals.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Weekly Meals</h5>
+                <p class="card-text">
+                  Progrssive Web application that helps users to choose
+                  daily/weekly meals but also add new ones
+                </p>
+                <div class="card-buttons">
+                  <a href="#" class="btn btn-primary">Visit</a>
+                  <a href="#" class="btn btn-primary">Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm foodFinder">
+            <div class="card" style="width: 18rem">
+              <img
+                class="card-img-top"
+                src="./assets/img/foodFinder.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Food Finder</h5>
+                <p class="card-text">
+                  Progressive web application that helps people to find and add
+                  their favorite restaurants.
                 </p>
                 <div class="card-buttons">
                   <a href="#" class="btn btn-primary">Visit</a>
@@ -308,6 +374,55 @@
           { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
           "-=1"
         );
+
+      // projects
+      let projects = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".project-container",
+          toggleActions: "play pause resume reset",
+          // scrub: true,
+        },
+      });
+      projects
+        .from(".projects-title", {
+          x: -200,
+          opacity: 0,
+          duration: 1,
+          ease: Bounce.easeOut,
+        })
+        .from(".covid1", { x: -200, opacity: 0, duration: 0.5 }, "-=1")
+        .from(
+          ".covid2",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1 },
+          "-=1"
+        )
+        .from(
+          ".condiciones",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
+          "-=1"
+        )
+        .from(
+          ".turistic",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
+          "-=1"
+        )
+        .from(
+          ".weekly",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
+          "-=1"
+        )
+        .from(
+          ".foodFinder",
+          { x: -200, opacity: 0, duration: 0.5, delay: 1.2 },
+          "-=1"
+        );
+
+      // covid1
+      // covid2
+      // condiciones
+      // turistic
+      // weekly
+      // foodFinder
 
       const img = document.querySelector(".skill-img");
       console.log(img);

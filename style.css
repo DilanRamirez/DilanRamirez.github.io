@@ -4,6 +4,9 @@ html[data-theme="light"] {
   --bg: rgb(255, 255, 255);
   --primary: #3a3a3a;
   --secondary: #848484;
+  --bg-card: #fff;
+  --secondary-button: #efefef;
+  --shadow-color: 0px 0px 25px 5px rgb(14 14 14 / 33%);
 }
 
 html[data-theme="dark"] {
@@ -11,6 +14,9 @@ html[data-theme="dark"] {
   --text-color: #fff;
   --primary: #fff;
   --secondary: #cecece;
+  --bg-card: #000;
+  --secondary-button: #424242;
+  --shadow-color: 0px 0px 59px 10px rgb(0 0 0);
 }
 
 html {
@@ -112,6 +118,11 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
 }
+
+#Skills {
+  height: 50vh !important;
+  margin-bottom: 25%;
+}
 .title {
   text-align: center;
   font-size: 64px;
@@ -121,8 +132,23 @@ body::-webkit-scrollbar-thumb {
 
 .btn-primary {
   color: var(--secondary);
-  background-color: #efefef;
-  border-color: #efefef;
+  background-color: var(--secondary-button);
+  border: none;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #1db954;
+  border: none;
+}
+
+.btn-primary :active {
+  color: #fff;
+  background-color: #1db954;
+  border: none;
+}
+.bottom-arrow2 {
+  position: relative;
 }
 
 /* Home */
@@ -201,9 +227,6 @@ body::-webkit-scrollbar-thumb {
   position: relative;
 }
 
-.education {
-  margin-bottom: 50px;
-}
 .education-school {
   color: var(--primary);
   font-weight: 500;
@@ -269,12 +292,12 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: var(--bg);
   background-clip: border-box;
   border: 0px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  -webkit-box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.36);
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: var(--shadow-color);
+  box-shadow: var(--shadow-color);
 }
 
 .card-title {
@@ -290,6 +313,10 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.projects-2 {
+  margin-top: 50px;
 }
 
 @media screen and (max-width: 600px) {
@@ -359,7 +386,15 @@ body::-webkit-scrollbar-thumb {
     max-height: 100px;
   }
 
+  #Skills {
+    height: 100vh !important;
+    margin-top: 15%;
+  }
+
   /* projects */
+  #Projects {
+    height: 380vh !important;
+  }
   .projects {
     /* margin-top: 100%; */
   }
