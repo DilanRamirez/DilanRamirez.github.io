@@ -474,7 +474,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   #Skills {
-    height: 100vh !important;
+    height: 170% !important;
     margin-top: 15%;
   }
 
