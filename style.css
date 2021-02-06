@@ -346,7 +346,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #Projects {
-  height: 150vh !important;
+  height: 200% !important;
 }
 
 .card {
@@ -392,6 +392,18 @@ body::-webkit-scrollbar-thumb {
 .notready {
   color: var(--secondary);
   text-align: center;
+}
+
+/* Presentations */
+.presentation-title {
+  color: var(--primary);
+  justify-content: center;
+}
+.presentation-citation {
+  color: var(--secondary);
+  font-size: 12px;
+  text-align: justify;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 600px) {
@@ -468,7 +480,7 @@ body::-webkit-scrollbar-thumb {
 
   /* projects */
   #Projects {
-    height: 500vh !important;
+    height: 220% !important;
   }
   .projects {
     /* margin-top: 100%; */
