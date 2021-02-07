@@ -7,6 +7,7 @@ html[data-theme="light"] {
   --bg-card: #fff;
   --secondary-button: #efefef;
   --shadow-color: 0px 0px 25px 5px rgb(14 14 14 / 33%);
+  --footer-gb: #272727;
 }
 
 html[data-theme="dark"] {
@@ -17,6 +18,7 @@ html[data-theme="dark"] {
   --bg-card: #000;
   --secondary-button: #424242;
   --shadow-color: 0px 0px 59px 10px rgb(0 0 0);
+  --footer-gb: rgb(255, 255, 255);
 }
 
 html {
@@ -179,6 +181,14 @@ body::-webkit-scrollbar-thumb {
   box-shadow: 0 0 0 0.2rem rgb(29 185 84 / 50%) !important;
 }
 
+.navbar-dark .navbar-toggler {
+  border: 0px !important;
+}
+
+.navbar-light .navbar-toggler {
+  border: 0px !important;
+}
+
 /* Modals */
 .modal-content {
   border-radius: 15px !important;
@@ -285,6 +295,29 @@ body::-webkit-scrollbar-thumb {
 .home .bottom-arrow .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+/* about */
+
+.about-row {
+  height: 35vh;
+}
+
+.about-img {
+  height: 100%;
+  border-radius: 25px;
+}
+
+.about-2 {
+  display: flex;
+  justify-content: center;
+}
+
+.about-content {
+  color: var(--primary);
+  font-size: 18px;
+  text-align: justify;
+  padding: 0px 60px 0px 60px;
 }
 
 /* Education */
@@ -406,6 +439,77 @@ body::-webkit-scrollbar-thumb {
   margin-top: 20px;
 }
 
+/* Comments */
+.comment-content {
+  color: var(--secondary);
+  font-size: 18px;
+  text-align: justify;
+  max-height: 500px;
+}
+.comment-person {
+  color: var(--secondary);
+  font-weight: bold;
+  margin-bottom: 0px !important;
+}
+.comment-position {
+  color: var(--secondary);
+  font-size: 12px;
+}
+
+/* Activities */
+.youth,
+.teaClub,
+.adventurer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  height: 15vh;
+  background-color: var(--footer-gb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-autor {
+  color: var(--bg);
+  font-size: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-contactme {
+  font-size: 30px;
+  max-width: 250px !important;
+  height: 50px !important;
+  text-align: center;
+  color: var(--bg);
+  border: 1px solid var(--bg);
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-icons {
+  text-align: center;
+  color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-icons i {
+  font-size: 30px;
+  margin: 0px 10px 0px 10px;
+  cursor: pointer;
+}
+.footer-icons a {
+  color: var(--bg) !important;
+}
+
 @media screen and (max-width: 600px) {
   section {
     height: 100vh;
@@ -429,6 +533,8 @@ body::-webkit-scrollbar-thumb {
   .bottom-arrow {
     bottom: 3% !important;
   }
+
+  /* About */
 
   /* Education */
   .education-school {
@@ -474,8 +580,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   #Skills {
-    height: 170% !important;
-    margin-top: 15%;
+    height: 103vh !important;
   }
 
   /* projects */
@@ -484,5 +589,76 @@ body::-webkit-scrollbar-thumb {
   }
   .projects {
     /* margin-top: 100%; */
+  }
+
+  /* Commnets */
+  #Comments {
+    height: 140vh;
+  }
+
+  .comments-row div {
+    margin-bottom: 30px !important;
+  }
+  .comment-content {
+    padding: 0px 20px 0px 20px;
+    font-size: 15px;
+  }
+
+  #Presentations {
+    height: 115vh;
+  }
+  .presentation {
+    padding: 10px 20px 10px 20px;
+  }
+
+  #Activities {
+    height: 160vh;
+  }
+
+  /* Footer */
+  .footer {
+    width: 100%;
+    height: 15vh;
+    background-color: var(--footer-gb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-autor {
+    color: var(--bg);
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-contactme {
+    font-size: 20px;
+    max-width: 100% !important;
+    height: 30px !important;
+    text-align: center;
+
+    color: var(--bg);
+    border: 0px solid var(--bg) !important;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+  }
+  .footer-icons {
+    text-align: center;
+    color: var(--bg);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-icons i {
+    font-size: 25px;
+    margin: 0px 10px 0px 10px;
+    cursor: pointer;
   }
 }
