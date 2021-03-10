@@ -509,7 +509,39 @@ body::-webkit-scrollbar-thumb {
   color: var(--bg) !important;
 }
 
+/* .navbar {
+  padding: 1.5rem 1rem !important;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    position: fixed !important;
+    width: 100% !important;
+    background-color: var(--bg) !important;
+    z-index: 2 !important;
+  }
+} */
+
+.navbar {
+  padding: 0.5rem 1rem;
+  position: fixed !important;
+  background: var(--bg) !important;
+  z-index: 2 !important;
+  width: 100% !important;
+}
 @media screen and (max-width: 600px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+    position: fixed !important;
+    background: var(--bg) !important;
+    z-index: 2 !important;
+    width: 100% !important;
+  }
   section {
     height: 100vh;
     width: 100%;
