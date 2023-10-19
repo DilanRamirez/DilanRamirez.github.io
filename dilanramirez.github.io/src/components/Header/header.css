@@ -7,8 +7,8 @@
 }
 
 .header_box {
-  position: fixed;
   height: 50px;
+  width: 100%;
 }
 .header-container {
   background-color: #fff !important;

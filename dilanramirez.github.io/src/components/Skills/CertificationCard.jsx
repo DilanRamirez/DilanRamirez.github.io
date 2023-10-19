@@ -40,7 +40,7 @@ function CertificationCard({
     <List>
       <ListItem>
         <Typography className="card-subtext" key={key}>
-          {description}
+          - {description}
         </Typography>
       </ListItem>
     </List>
@@ -82,6 +82,7 @@ function CertificationCard({
           variant="contained"
           className={`card-btn-${unique}`}
           href={credential_url}
+          target="_blank"
         >
           Certificate
         </Button>

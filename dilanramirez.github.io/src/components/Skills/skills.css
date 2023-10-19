@@ -5,10 +5,20 @@
 
 .skills-container {
   width: 90%;
+  max-height: 100%;
 }
 .certifications-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.certification-title {
+  font-size: 32px !important;
+  color: var(--primary-font-color);
+  font-weight: 600 !important;
+  text-align: center;
+  margin-bottom: 20px !important;
+  margin-top: 120px !important;
 }
 
 .card-name {
@@ -62,7 +72,8 @@
 .card-container-1,
 .card-container-2,
 .card-container-3,
-.card-container-4 {
+.card-container-4,
+.card-container-5 {
   height: 500px;
   width: 240px;
   position: relative;
@@ -81,12 +92,16 @@
   border-top: 5px solid #add8e6;
 }
 .card-container-3 {
-  border-bottom: 5px solid #f7f7b0;
+  border-bottom: 5px solid #eeee67;
   border-top: 5px solid #f7f7b0;
 }
 .card-container-4 {
   border-bottom: 5px solid #d0d0f7;
   border-top: 5px solid #d0d0f7;
+}
+.card-container-5 {
+  border-bottom: 5px solid #ffb784;
+  border-top: 5px solid #ffb784;
 }
 .card-btn-0 {
   background-color: #ffb6c1 !important;
@@ -108,13 +123,21 @@
   margin-top: 30px !important;
 }
 .card-btn-3 {
-  background-color: #f7f7b0 !important;
+  background-color: #eeee67 !important;
+  color: var(--secondary-font-color) !important;
   width: 100px !important;
   height: 30px !important;
   margin-top: 30px !important;
 }
 .card-btn-4 {
   background-color: #d0d0f7 !important;
+  width: 100px !important;
+  height: 30px !important;
+  margin-top: 30px !important;
+}
+
+.card-btn-5 {
+  background-color: #ffb784 !important;
   width: 100px !important;
   height: 30px !important;
   margin-top: 30px !important;

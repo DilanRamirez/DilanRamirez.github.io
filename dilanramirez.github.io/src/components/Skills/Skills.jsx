@@ -41,7 +41,7 @@ function Skills() {
   return (
     <Box className="skills-container">
       <div className="certification-container">
-        <Typography>Certifications</Typography>
+        <Typography className="certification-title">Certifications</Typography>
         <Box sx={{ width: "100%" }}>
           <Grid container spacing={1}>
             {certification_cards}

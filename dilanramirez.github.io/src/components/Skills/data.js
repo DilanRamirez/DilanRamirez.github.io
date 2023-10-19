@@ -111,4 +111,27 @@ export const certification_data = [
       "https://www.coursera.org/account/accomplishments/verify/4UX5AMH6PUFU",
     certifcate_location: "../../assets/4UX5AMH6PUFU.pdf",
   },
+  {
+    name: "Developing AI Applications with Python and Flask",
+    issuing_organization: "Coursera",
+    issuing_date: "October 2023",
+    credential_id: "4UX5AMH6PUFU",
+    description: [
+      "Create Python apps with a focus on the development lifecycle.",
+      "Build Python modules, run unit tests, and follow PEP8 coding standards.",
+      "Utilize Flask to deploy web applications with ease.",
+      "Develop AI apps using IBM Watson AI Libraries and Flask.",
+    ],
+    skills: [
+      "Artificial Intelligence (AI)",
+      "Web Application",
+      "Python Programming",
+      "Application development",
+      "Flask",
+    ],
+    expiration_date: "Not expire",
+    credential_url:
+      "https://www.coursera.org/account/accomplishments/verify/4UX5AMH6PUFU",
+    certifcate_location: "../../assets/4UX5AMH6PUFU.pdf",
+  },
 ];

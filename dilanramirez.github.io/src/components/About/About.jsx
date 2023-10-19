@@ -12,7 +12,7 @@ function About() {
           words={["Passionate about Leveraging Technology for Impact!"]}
           typeSpeed={80}
           cursor={true}
-          loop={1}
+          loop={10}
         />
       </Typography>
       <Typography className="about-description">
