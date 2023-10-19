@@ -1,0 +1,40 @@
+:root {
+  --primary-font-color: #3a3a3a;
+  --secondary-font-color: #848484;
+}
+
+.about-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-title {
+  font-size: 32px !important;
+  margin-bottom: 20px !important;
+  text-align: center;
+}
+.about-title span {
+  color: var(--primary-font-color);
+  font-weight: 600 !important;
+}
+
+.about-description {
+  text-align: justify;
+}
+.about-left-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about-right-side {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

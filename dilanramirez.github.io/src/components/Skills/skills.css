@@ -1,0 +1,12 @@
+:root {
+  --primary-font-color: #3a3a3a;
+  --secondary-font-color: #848484;
+}
+
+.skills-container {
+  width: 90%;
+}
+.certifications-container {
+  display: flex;
+  justify-content: center;
+}

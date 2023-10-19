@@ -1,0 +1,29 @@
+:root {
+  --primary-font-color: #3a3a3a;
+  --secondary-font-color: #848484;
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homepage-details-name {
+  color: var(--font-color) !important;
+  font-size: 68px !important;
+  text-align: center;
+  font-weight: 600 !important;
+}
+
+.homepage-details-position {
+  color: var(--secondary-font-color) !important;
+  font-size: 32px !important;
+  text-align: center;
+}
+.homepage-details-position-2 {
+  color: var(--secondary-font-color) !important;
+  font-size: 18px !important;
+  text-align: center;
+  font-weight: 400 !important;
+}

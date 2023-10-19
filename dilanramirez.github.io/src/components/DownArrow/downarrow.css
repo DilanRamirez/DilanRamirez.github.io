@@ -1,0 +1,16 @@
+:root {
+  --primary-font-color: #3a3a3a;
+  --secondary-font-color: #848484;
+}
+
+.arrowdown {
+  color: var(--secondary-font-color) !important;
+  font-size: 36px !important;
+  width: auto !important;
+}
+.downarrow-container {
+  margin: auto !important;
+}
+.MuiButton-endIcon {
+  margin-left: 0px !important;
+}
