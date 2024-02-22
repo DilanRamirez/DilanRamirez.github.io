@@ -18,7 +18,6 @@
   font-weight: 600 !important;
   text-align: center;
   margin-bottom: 20px !important;
-  margin-top: 120px !important;
 }
 
 .card-name {
@@ -59,12 +58,13 @@
   height: 530px;
   background-color: #565656;
   border-radius: 15px;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 15px 10px 15px;
   color: #fff !important;
 }
 
 .certification-card-container:hover .certification-card-wrapper {
   color: #fff !important;
+  padding: 10px 20px 10px 20px;
 }
 
 .certification-card-container:hover .card-name {
@@ -79,6 +79,11 @@
 
 .certification-card-container:hover .card-subtext-2 {
   font-size: 14px !important;
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-subtext {
+  font-size: 13px !important;
   color: #fff !important;
 }
 
@@ -116,6 +121,8 @@
   left: 50%;
   bottom: 0px;
   transform: translate(-50%, -50%);
+  border-radius: 10px !important;
+  padding: 10px !important;
 }
 
 .MuiList-root {
@@ -145,79 +152,83 @@
   width: 50%;
   text-align: left;
 }
-
 .card-container-0,
 .card-container-1,
 .card-container-2,
 .card-container-3,
 .card-container-4,
 .card-container-5 {
-  height: 510px;
+  height: 460px;
   width: 240px;
   position: relative;
 }
 
+.card-btn-0,
+.card-btn-1,
+.card-btn-2,
+.card-btn-3,
+.card-btn-4,
+.card-btn-5 {
+  background-color: #3a3a3a !important;
+  color: #fff !important;
+  font-weight: 600;
+  width: 100px !important;
+  height: 30px !important;
+  margin-top: 20px !important;
+}
 .card-container-0 {
-  border-bottom: 5px solid #ffb6c1;
-  border-top: 5px solid #ffb6c1;
+  /* border-bottom: 5px solid #ffb6c1;
+  border-top: 5px solid #ffb6c1; */
+  border-bottom: 5px solid #b5b5b5;
+  border-top: 5px solid #b5b5b5;
 }
 .card-container-1 {
-  border-bottom: 5px solid #90ee90;
-  border-top: 5px solid #90ee90;
+  /* border-bottom: 5px solid #90ee90;
+  border-top: 5px solid #90ee90; */
+  border-bottom: 5px solid #b5b5b5;
+  border-top: 5px solid #b5b5b5;
 }
 .card-container-2 {
-  border-bottom: 5px solid #add8e6;
-  border-top: 5px solid #add8e6;
+  /* border-bottom: 5px solid #add8e6;
+  border-top: 5px solid #add8e6; */
+  border-bottom: 5px solid #b5b5b5;
+  border-top: 5px solid #b5b5b5;
 }
 .card-container-3 {
-  border-bottom: 5px solid #eeee67;
-  border-top: 5px solid #f7f7b0;
+  /* border-bottom: 5px solid #eeee67;
+  border-top: 5px solid #f7f7b0; */
+  border-bottom: 5px solid #b5b5b5;
+  border-top: 5px solid #b5b5b5;
 }
 .card-container-4 {
-  border-bottom: 5px solid #d0d0f7;
-  border-top: 5px solid #d0d0f7;
+  /* border-bottom: 5px solid #d0d0f7;
+  border-top: 5px solid #d0d0f7; */
+  border-bottom: 5px solid #b5b5b5;
+  border-top: 5px solid #b5b5b5;
 }
 .card-container-5 {
-  border-bottom: 5px solid #ffb784;
-  border-top: 5px solid #ffb784;
+  /* border-bottom: 5px solid #ffb784;
+  border-top: 5px solid #ffb784; */
+  border-bottom: 5px solid #b5b5b5;
+  border-top: 5px solid #b5b5b5;
 }
 .card-btn-0 {
-  background-color: #ffb6c1 !important;
-  width: 100px !important;
-  height: 30px !important;
-  margin-top: 30px !important;
-  color: #000 !important;
+  /* background-color: #ffb6c1 !important; */
 }
 .card-btn-1 {
-  background-color: #90ee90 !important;
-  width: 100px !important;
-  height: 30px !important;
-  margin-top: 30px !important;
+  /* background-color: #90ee90 !important; */
 }
 
 .card-btn-2 {
-  background-color: #add8e6 !important;
-  width: 100px !important;
-  height: 30px !important;
-  margin-top: 30px !important;
+  /* background-color: #add8e6 !important; */
 }
 .card-btn-3 {
-  background-color: #eeee67 !important;
-  color: var(--secondary-font-color) !important;
-  width: 100px !important;
-  height: 30px !important;
-  margin-top: 30px !important;
+  /* background-color: #eeee67 !important; */
 }
 .card-btn-4 {
-  background-color: #d0d0f7 !important;
-  width: 100px !important;
-  height: 30px !important;
-  margin-top: 30px !important;
+  /* background-color: #d0d0f7 !important; */
 }
 
 .card-btn-5 {
-  background-color: #ffb784 !important;
-  width: 100px !important;
-  height: 30px !important;
-  margin-top: 30px !important;
+  /* background-color: #ffb784 !important; */
 }

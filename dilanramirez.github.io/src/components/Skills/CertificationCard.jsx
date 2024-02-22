@@ -80,6 +80,7 @@ function CertificationCard({
         className={`card-btn-${unique} card-btn`}
         href={credential_url}
         target="_blank"
+        style={{ width: "20% !important" }}
       >
         Certificate
       </Button>
