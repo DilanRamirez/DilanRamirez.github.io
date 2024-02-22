@@ -52,7 +52,7 @@ export const certification_data = [
     description: [
       "Version control in social coding and DevOps.",
       "Basic Git concepts: repositories, branches, and distributed version control.",
-      "Collaborate on team projects with GitHub, pull requests, and merges.",
+      "Collaborate on projects with GitHub, pull requests, and merges.",
       "Share open-source projects on GitHub to build your portfolio.",
     ],
     skills: [

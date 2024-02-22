@@ -40,6 +40,84 @@
   margin-bottom: -3px !important;
 }
 
+.certification-card-container {
+  position: relative;
+  width: 90%;
+  height: 450px;
+  background-color: #e9e9e9;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+}
+
+.certification-card-wrapper {
+  padding: 10px 30px 10px 30px;
+}
+
+.certification-card-container:hover {
+  position: relative;
+  width: 95%;
+  height: 530px;
+  background-color: #565656;
+  border-radius: 15px;
+  padding: 10px 20px 10px 20px;
+  color: #fff !important;
+}
+
+.certification-card-container:hover .certification-card-wrapper {
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-name {
+  font-size: 18px !important;
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-subtext-3 {
+  font-size: 14px !important;
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-subtext-2 {
+  font-size: 14px !important;
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-description {
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-skills {
+  color: #fff !important;
+}
+
+.certification-card-container:hover .certification-details {
+  color: #fff !important;
+}
+
+.certification-card-container:hover .card-btn {
+  position: absolute !important;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+  background-color: #d5d5d5 !important;
+  color: #565656 !important;
+}
+
+.certification-card-container:hover .card-btn {
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-btn {
+  position: absolute !important;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+}
+
 .MuiList-root {
   padding: 1px 0px 1px 2px !important;
 }
@@ -74,7 +152,7 @@
 .card-container-3,
 .card-container-4,
 .card-container-5 {
-  height: 500px;
+  height: 510px;
   width: 240px;
   position: relative;
 }
@@ -108,6 +186,7 @@
   width: 100px !important;
   height: 30px !important;
   margin-top: 30px !important;
+  color: #000 !important;
 }
 .card-btn-1 {
   background-color: #90ee90 !important;

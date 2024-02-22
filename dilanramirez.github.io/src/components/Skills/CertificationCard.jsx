@@ -46,50 +46,44 @@ function CertificationCard({
     </List>
   ));
   return (
-    <Box style={{ maxHeight: "100%", overflowY: "auto" }}>
-      <Typography className="card-name">{name}</Typography>
-      <div className="card-description">{description_list}</div>
-      <div className="card-skills">{skills_list}</div>
+    <div className="certification-card-container">
+      <Box className="certification-card-wrapper">
+        <Typography className="card-name">{name}</Typography>
+        <div className="card-description">
+          <Typography
+            className="card-subtext-3"
+            style={{ textAlign: "left", marginLeft: 5 }}
+          >
+            Description
+          </Typography>
+          {description_list}
+        </div>
+        <div className="card-skills">
+          <Typography
+            className="card-subtext-3"
+            style={{ textAlign: "left", marginLeft: 5 }}
+          >
+            Skills
+          </Typography>
+          {skills_list}
+        </div>
 
-      <div className="certification-details">
-        <div className="details-left">
-          <div className="organization">
-            <Typography className="card-subtext-3">Issued by</Typography>
-            <Typography className="card-subtext-2">
-              {issuing_organization}
-            </Typography>
-          </div>
+        <div className="certification-details">
           <div>
             <Typography className="card-subtext-3">Credential ID</Typography>
             <Typography className="card-subtext-2">{credential_id}</Typography>
           </div>
         </div>
-        <div className="details-right">
-          <div>
-            <Typography className="card-subtext-3">Issuing Date</Typography>
-            <Typography className="card-subtext-2">{issuing_date}</Typography>
-          </div>
-          <div>
-            <Typography className="card-subtext-3">Expiration Date</Typography>
-            <Typography className="card-subtext-2">
-              {expiration_date}
-            </Typography>
-          </div>
-        </div>
-      </div>
-      <div className="card-certificate">
-        <Button
-          variant="contained"
-          className={`card-btn-${unique}`}
-          href={credential_url}
-          target="_blank"
-        >
-          Certificate
-        </Button>
-      </div>
-
-      {/* <Typography>{credential_url}</Typography> */}
-    </Box>
+      </Box>
+      <Button
+        variant="contained"
+        className={`card-btn-${unique} card-btn`}
+        href={credential_url}
+        target="_blank"
+      >
+        Certificate
+      </Button>
+    </div>
   );
 }
 
