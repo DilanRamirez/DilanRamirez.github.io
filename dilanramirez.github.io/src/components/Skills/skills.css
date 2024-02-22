@@ -125,6 +125,9 @@
   padding: 10px !important;
 }
 
+.react-multi-carousel-dot-list {
+  bottom: 70px !important;
+}
 .MuiList-root {
   padding: 1px 0px 1px 2px !important;
 }
