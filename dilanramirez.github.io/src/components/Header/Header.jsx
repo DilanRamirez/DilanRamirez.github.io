@@ -28,6 +28,7 @@ function DrawerAppBar(props) {
       document
         .getElementById(item.toLowerCase())
         .scrollIntoView({ behavior: "smooth" });
+      props.setCurrentSection(navItems.indexOf(item));
     }
     return;
   };
@@ -40,7 +41,7 @@ function DrawerAppBar(props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {navItems.map((item, i) => (
           <ListItem
             key={item}
             disablePadding
@@ -82,6 +83,16 @@ function DrawerAppBar(props) {
                 key={item}
                 sx={{ color: "#3a3a3a" }}
                 onClick={() => onSectionClick(item)}
+                style={{
+                  backgroundColor:
+                    props.currentSection === navItems.indexOf(item)
+                      ? "#212121"
+                      : "#fff",
+                  color:
+                    props.currentSection === navItems.indexOf(item)
+                      ? "#fff"
+                      : "#212121",
+                }}
               >
                 {item}
               </Button>

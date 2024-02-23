@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+import react, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -8,20 +8,36 @@ import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 
 function App() {
+  const [currentSection, setCurrentSection] = useState(0);
   return (
     <div>
-      <Header />
+      <Header
+        setCurrentSection={setCurrentSection}
+        currentSection={currentSection}
+      />
       <section id="home">
-        <Home />
+        <Home
+          setCurrentSection={setCurrentSection}
+          currentSection={currentSection}
+        />
       </section>
       <section id="about">
-        <About />
+        <About
+          setCurrentSection={setCurrentSection}
+          currentSection={currentSection}
+        />
       </section>
       <section id="skills">
-        <Skills />
+        <Skills
+          setCurrentSection={setCurrentSection}
+          currentSection={currentSection}
+        />
       </section>
       <section id="projects">
-        <Projects />
+        <Projects
+          setCurrentSection={setCurrentSection}
+          currentSection={currentSection}
+        />
       </section>
       <section id="contact">
         <Contact />
