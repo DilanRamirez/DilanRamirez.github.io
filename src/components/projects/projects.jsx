@@ -254,7 +254,6 @@ const Projects = () => {
         id="projects"
         sx={{
           minHeight: "calc(100vh - 64px - 60px)",
-          scrollMarginTop: "80px",
           py: 4,
           px: 2,
         }}

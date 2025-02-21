@@ -50,10 +50,6 @@ const App = () => {
           <Skills />
         </SectionWrapper>
 
-        <SectionWrapper darkMode={darkMode} id="contactme">
-          <Contact />
-        </SectionWrapper>
-
         <SectionWrapper darkMode={darkMode} id="certifications">
           <Certifications />
         </SectionWrapper>

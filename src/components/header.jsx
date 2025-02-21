@@ -14,6 +14,7 @@ import {
   ListItemText,
   useTheme,
   useMediaQuery,
+  Tooltip,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { ThemeProvider } from "@mui/material/styles";
@@ -22,13 +23,15 @@ import useActiveSection from "./hooks/use-active-section";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
+import DownloadIcon from "@mui/icons-material/Download";
+
+import resume from "../assets/Dilan_Ramirez_FullStack_Software_Engineer_Resume.pdf";
 
 // Define your portfolio sections here
 const sections = [
   { label: "Home", anchor: "home" },
   { label: "Projects", anchor: "projects" },
   { label: "Skills", anchor: "skills" },
-  { label: "Contact me", anchor: "contactme" },
   { label: "Certifications", anchor: "certifications" },
   { label: "Conferences & Presentations", anchor: "conferences" },
 ];
@@ -94,29 +97,48 @@ function Header({ darkMode, setDarkMode }) {
               Dilan Ramirez
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <IconButton
-                size="large"
-                href="https://www.linkedin.com/in/dilanramirez/"
-                target="_blank"
-                sx={{ color: theme.palette.text.primar }}
-              >
-                <LinkedInIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
-              </IconButton>
-              <IconButton
-                size="large"
-                href="https://github.com/dilanramirez"
-                target="_blank"
-                sx={{ color: theme.palette.text.primary }}
-              >
-                <GitHubIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
-              </IconButton>
-              <IconButton
-                size="large"
-                href="mailto:drramirezra@gmail.com"
-                sx={{ color: theme.palette.text.primary }}
-              >
-                <EmailIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
-              </IconButton>
+              <Tooltip title="Visit LinkedIn">
+                <IconButton
+                  size="large"
+                  href="https://www.linkedin.com/in/dilanramirez/"
+                  target="_blank"
+                  sx={{ color: theme.palette.text.primary }}
+                >
+                  <LinkedInIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Visit GitGub">
+                <IconButton
+                  size="large"
+                  href="https://github.com/dilanramirez"
+                  target="_blank"
+                  sx={{ color: theme.palette.text.primary }}
+                >
+                  <GitHubIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Send an Email">
+                <IconButton
+                  size="large"
+                  href="mailto:drramirezra@gmail.com"
+                  sx={{ color: theme.palette.text.primary }}
+                >
+                  <EmailIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Download Resume">
+                <IconButton
+                  size="large"
+                  component="a"
+                  href={resume}
+                  download="Dilan_Ramirez_FullStack_Software_Engineer_Resume.pdf"
+                  sx={{ color: theme.palette.text.primary }}
+                >
+                  <DownloadIcon style={{ fontSize: isMobile ? "20px" : 25 }} />
+                </IconButton>
+              </Tooltip>
             </Box>
           </Box>
 

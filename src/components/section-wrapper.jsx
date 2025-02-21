@@ -27,6 +27,7 @@ function SectionWrapper({ darkMode, id, children }) {
       sx={{
         minHeight: "calc(100vh - 64px - 60px)", // Adjust for your header/footer heights
         backgroundColor: darkMode ? "#272727" : "#fff",
+        scrollMarginTop: "80px",
         color: darkMode ? "#fff" : "#000",
         py: 4,
         px: 2,
