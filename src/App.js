@@ -3,7 +3,6 @@ import { Box } from "@mui/system";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Header from "./components/header";
 import Projects from "./components/projects/projects";
-import Contact from "./components/contact";
 import Certifications from "./components/certifications";
 import Conferences from "./components/conferences";
 import Footer from "./components/footer";
