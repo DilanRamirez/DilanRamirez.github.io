@@ -3,6 +3,22 @@ import React from "react";
 import { Container, Typography, Box, Grid, Chip } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { motion } from "framer-motion";
+import {
+  FaReact,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaGit,
+  FaDocker,
+  FaAws,
+} from "react-icons/fa";
+import {
+  SiJavascript,
+  SiRedux,
+  SiFigma,
+  SiTypescript,
+  SiGatsby,
+} from "react-icons/si";
 
 const theme = createTheme({
   typography: { fontFamily: "Poppins, sans-serif" },
@@ -78,13 +94,29 @@ const skillsData = {
   ],
 };
 
+// Mapping skills to icons
+const iconMapping = {
+  "React JS": <FaReact />,
+  Redux: <SiRedux />,
+  JavaScript: <SiJavascript />,
+  "Node.js": <FaNodeJs />,
+  Figma: <SiFigma />,
+  "React Native": <FaReact />,
+  TypeScript: <SiTypescript />,
+  Gatsby: <SiGatsby />,
+  HTML: <FaHtml5 />,
+  CSS: <FaCss3Alt />,
+  Git: <FaGit />,
+  Docker: <FaDocker />,
+  "AWS (EC2, Linux, IAM)": <FaAws />,
+  "Python (ArcPy)": <SiJavascript />, // Alternatively, you might consider using another icon for Python if desired, e.g. FaPython from react-icons/fa (requires import { FaPython } from "react-icons/fa")
+};
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
@@ -100,7 +132,7 @@ function Skills() {
         maxWidth="lg"
         id="skills"
         sx={{
-          minHeight: "calc(100vh - 64px - 60px)", // adjusts for header/footer
+          minHeight: "calc(100vh - 64px - 60px)",
           scrollMarginTop: "70px",
           py: 4,
         }}
@@ -134,10 +166,8 @@ function Skills() {
                         <Chip
                           label={skill}
                           variant="outlined"
-                          sx={{
-                            borderColor: "#000",
-                            color: "#000",
-                          }}
+                          icon={iconMapping[skill] || null}
+                          sx={{ borderColor: "#000", color: "#000" }}
                         />
                       </motion.div>
                     </Grid>

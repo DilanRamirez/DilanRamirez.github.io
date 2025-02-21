@@ -10,6 +10,7 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { motion } from "framer-motion";
+import vector from "../assets/undraw_source-code.svg";
 
 const theme = createTheme({
   typography: {
@@ -49,6 +50,17 @@ const Home = ({ darkMode }) => {
           px: 2,
         }}
       >
+        <img
+          src={vector}
+          alt="Hero Illustration"
+          style={{
+            width: "100%",
+            position: "absolute",
+            filter: "blur(10px)",
+            opacity: 0.2,
+          }}
+        />
+
         {/* Name */}
         <motion.div
           initial={{ opacity: 0 }}

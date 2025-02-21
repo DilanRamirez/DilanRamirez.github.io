@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Box } from "@mui/system";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Divider } from "@mui/material";
 import Header from "./components/header";
 import Projects from "./components/projects/projects";
 import Certifications from "./components/certifications";
@@ -41,21 +42,26 @@ const App = () => {
         <SectionWrapper id="home" darkMode={darkMode}>
           <Home />
         </SectionWrapper>
-
+        <Divider />
         <SectionWrapper darkMode={darkMode} id="projects">
           <Projects />
         </SectionWrapper>
+        <Divider />
+
         <SectionWrapper darkMode={darkMode} id="skills">
           <Skills />
         </SectionWrapper>
+        <Divider />
 
         <SectionWrapper darkMode={darkMode} id="certifications">
           <Certifications />
         </SectionWrapper>
+        <Divider />
 
         <SectionWrapper darkMode={darkMode} id="conferences">
           <Conferences />
         </SectionWrapper>
+        <Divider />
 
         <Footer darkMode={darkMode} />
       </Box>
