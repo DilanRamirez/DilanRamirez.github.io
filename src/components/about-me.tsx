@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, memo } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants, type Easing } from "framer-motion";
 import { Briefcase, GraduationCap } from "lucide-react";
 
 // ----- Types -----
@@ -58,12 +58,12 @@ const careerTimeline: TimelineMilestone[] = [
 ];
 
 // Animation variants reused for consistency
-const fadeUpVariants = {
+const fadeUpVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeInOut" },
+    transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] as Easing },
   },
 };
 

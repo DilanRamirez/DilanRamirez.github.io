@@ -48,8 +48,8 @@ const skillGroups: SkillGroup[] = [
       { name: "React", proficiency: 95, years: "5+" },
       { name: "Redux", proficiency: 90, years: "4+" },
       { name: "TypeScript", proficiency: 90, years: "4+" },
-      { name: "Figma (UI/UX Design)", proficiency: 85, years: "3+" },
-      { name: "HTML/CSS", proficiency: 98, years: "7+" },
+      { name: "Figma (UI/UX Design)", proficiency: 85, years: "4+" },
+      { name: "HTML/CSS", proficiency: 98, years: "6+" },
     ],
   },
   {
@@ -58,7 +58,7 @@ const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Node.js", proficiency: 90, years: "5+" },
       { name: "Express.js", proficiency: 85, years: "4+" },
-      { name: "Python (ArcPy, Flask)", proficiency: 85, years: "6+" },
+      { name: "Python", proficiency: 85, years: "6+" },
       { name: "RESTful APIs / GraphQL", proficiency: 88, years: "4+" },
       { name: "Microservices Architecture", proficiency: 85, years: "4+" },
     ],
@@ -67,9 +67,28 @@ const skillGroups: SkillGroup[] = [
     name: "Cloud & DevOps",
     icon: Cloud,
     skills: [
-      { name: "AWS (EC2, Linux, IAM)", proficiency: 85, years: "3+" },
-      { name: "Docker", proficiency: 85, years: "3+" },
-      { name: "CI/CD (GitHub Actions)", proficiency: 85, years: "3+" },
+      { name: "AWS (EC2, Linux, IAM, Lambda)", proficiency: 80, years: "2+" },
+      { name: "Amazon EC2", proficiency: 60, years: "2+" },
+      { name: "AWS Lambda", proficiency: 85, years: "2+" },
+      { name: "Amazon S3", proficiency: 88, years: "2+" },
+      {
+        name: "IAM (Identity and Access Management)",
+        proficiency: 85,
+        years: "2+",
+      },
+      { name: "AWS Budgets", proficiency: 80, years: "2+" },
+      { name: "AWS Cost Explorer", proficiency: 80, years: "2+" },
+
+      // Azure additions
+      { name: "Azure Static Web Apps", proficiency: 80, years: "2+" },
+      { name: "Azure Cost Management", proficiency: 80, years: "2+" },
+      { name: "Azure Container Apps", proficiency: 78, years: "2+" },
+      { name: "Azure Container Registry", proficiency: 78, years: "2+" },
+      { name: "Azure Functions", proficiency: 80, years: "2+" },
+
+      // Docker and CI/CD
+      { name: "Docker", proficiency: 85, years: "4+" },
+      { name: "CI/CD (GitHub Actions)", proficiency: 85, years: "4+" },
       { name: "Sentry (Monitoring)", proficiency: 80, years: "2+" },
     ],
   },
@@ -77,10 +96,11 @@ const skillGroups: SkillGroup[] = [
     name: "Databases & Geospatial",
     icon: GitBranch,
     skills: [
-      { name: "SQL Server / PostgreSQL", proficiency: 85, years: "5+" },
-      { name: "MongoDB", proficiency: 75, years: "3+" },
-      { name: "ArcGIS Pro / QGIS", proficiency: 90, years: "4+" },
-      { name: "ESRI JavaScript API", proficiency: 88, years: "4+" },
+      { name: "SQL Server / PostgreSQL", proficiency: 85, years: "4+" },
+      { name: "MongoDB", proficiency: 75, years: "4+" },
+      { name: "Amazon DynamoDB", proficiency: 80, years: "2+" },
+      { name: "ArcGIS Pro / QGIS", proficiency: 90, years: "5+" },
+      { name: "ESRI JavaScript API", proficiency: 88, years: "5+" },
     ],
   },
 ];

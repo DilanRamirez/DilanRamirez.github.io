@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ExternalLink, Github, Search } from "lucide-react";
 import {
   Dialog,
@@ -51,90 +51,6 @@ const filterButtons = [
 
 const projects: Project[] = [
   {
-    id: 1,
-    name: "Geospatial Data Platform",
-    description:
-      "Built a scalable platform for processing and visualizing large geospatial datasets using AWS Lambda, S3, and React.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["AWS", "React", "TypeScript", "Node.js", "PostGIS"],
-    type: "Work Projects",
-    liveLink: "#",
-    githubLink: "#",
-    details: {
-      fullDescription:
-        "This project involved designing and implementing a comprehensive geospatial data platform. Key features included automated data ingestion pipelines using AWS Lambda and S3, real-time data processing with Kinesis, and a dynamic frontend visualization built with React and Mapbox GL JS. We achieved a 60% improvement in data processing time and reduced infrastructure costs by 30% through serverless optimizations. The platform supports complex spatial queries and provides interactive mapping capabilities for large datasets.",
-      metrics: [
-        "Improved data processing time by 60%",
-        "Reduced infrastructure costs by 30%",
-        "Handled 1TB+ of daily geospatial data",
-        "Supported 1000+ concurrent users",
-      ],
-      techStackIcons: [
-        { name: "AWS", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "React", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "TypeScript", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Node.js", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "PostGIS", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Mapbox GL JS", icon: "/placeholder.svg?height=30&width=30" },
-      ],
-    },
-  },
-  {
-    id: 2,
-    name: "E-commerce Microservices",
-    description:
-      "Developed a robust e-commerce backend with microservices architecture, integrating Stripe for payments and Kafka for event streaming.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Spring Boot", "Kafka", "Docker", "Kubernetes", "PostgreSQL"],
-    type: "Work Projects",
-    liveLink: "#",
-    githubLink: "#",
-    details: {
-      fullDescription:
-        "Designed and implemented a highly available e-commerce backend using a microservices architecture. Each service was containerized with Docker and orchestrated using Kubernetes. Integrated Stripe for secure payment processing and Kafka for asynchronous event streaming, ensuring high throughput and fault tolerance. Achieved 99.9% uptime and successfully handled peak loads of over 1000 requests per second during promotional events.",
-      metrics: [
-        "Achieved 99.9% uptime",
-        "Handled 1000+ requests/second peak load",
-        "Reduced payment processing latency by 25%",
-        "Improved system scalability by 50%",
-      ],
-      techStackIcons: [
-        { name: "Spring Boot", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Kafka", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Docker", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Kubernetes", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "PostgreSQL", icon: "/placeholder.svg?height=30&width=30" },
-      ],
-    },
-  },
-  {
-    id: 3,
-    name: "Personal Blog & Portfolio",
-    description:
-      "A personal blog and portfolio site built with Next.js and MDX, featuring server-side rendering and optimized image delivery.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "MDX", "Tailwind CSS", "Vercel"],
-    type: "Personal Projects",
-    liveLink: "#",
-    githubLink: "#",
-    details: {
-      fullDescription:
-        "Developed and deployed a personal blog and portfolio website using Next.js App Router, leveraging MDX for content management and Tailwind CSS for styling. Implemented server-side rendering for improved SEO and optimized image delivery with Next.js Image component. Features include a dark mode toggle, responsive design across all devices, and a contact form. Achieved Lighthouse scores of 95+ for performance, accessibility, and best practices.",
-      metrics: [
-        "Lighthouse performance score 95+",
-        "Fully responsive design",
-        "SEO optimized content",
-        "Fast page load times",
-      ],
-      techStackIcons: [
-        { name: "Next.js", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "MDX", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Tailwind CSS", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Vercel", icon: "/placeholder.svg?height=30&width=30" },
-      ],
-    },
-  },
-  {
     id: 4,
     name: "AI-Powered Chatbot",
     description:
@@ -161,6 +77,36 @@ const projects: Project[] = [
       ],
     },
   },
+  {
+    id: 5,
+    name: "Boardify",
+    description:
+      "A lightweight virtual whiteboard/card layout tool for organizing, panning, zooming, and persisting draggable cards across devices.",
+    image:
+      "https://github.com/DilanRamirez/Boardify/blob/main/public/app.png?raw=true",
+    tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "LocalStorage"],
+    type: "Personal Projects",
+    liveLink: "https://jolly-plant-01ab0c410.2.azurestaticapps.net",
+    githubLink: "#",
+    details: {
+      fullDescription:
+        "Boardify showcases combining polished interactive UX (drag, touch, zoom, pan) with robust engineering practices such as resilient loading, responsive design, unified input handling, and recovery from stale service worker cache issues. Features include drag-and-drop cards with visual feedback, zoom & pan controls, persisted layout using local storage, adaptive responsive controls, and robust error detection with recovery flows. This project highlights React/Next.js expertise, TypeScript typing, input abstraction, transform mathematics, and user-centric error resilience.",
+      metrics: [
+        "Drag-and-drop cards with mouse and touch support",
+        "Zooming (20%-300%) with focus-centered scaling",
+        "Persistent card layout saved in local storage",
+        "Robust stale asset detection and recovery",
+        "Fully responsive, mobile-friendly controls",
+      ],
+      techStackIcons: [
+        { name: "Next.js", icon: "/placeholder.svg?height=30&width=30" },
+        { name: "TypeScript", icon: "/placeholder.svg?height=30&width=30" },
+        { name: "React", icon: "/placeholder.svg?height=30&width=30" },
+        { name: "Tailwind CSS", icon: "/placeholder.svg?height=30&width=30" },
+        { name: "lucide-react", icon: "/placeholder.svg?height=30&width=30" },
+      ],
+    },
+  },
 ];
 
 // ----- Animation Variants (constant, reused) -----
@@ -168,9 +114,16 @@ const containerVariants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.42, 0, 0.58, 1],
+    },
+  },
 };
 
 // ----- Custom Hook -----
