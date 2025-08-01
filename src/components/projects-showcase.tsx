@@ -1,12 +1,12 @@
 "use client";
 
+import React, { useState, useMemo, useCallback, memo, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Search } from "lucide-react";
-import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -15,9 +15,41 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Badge } from "@/components/ui/badge"; // Assuming you have a Badge component
+import { Badge } from "@/components/ui/badge";
 
-const projects = [
+// ----- Types -----
+interface TechIcon {
+  name: string;
+  icon?: string; // fallback to placeholder if missing
+}
+
+interface ProjectDetails {
+  fullDescription: string;
+  metrics: string[];
+  techStackIcons?: TechIcon[];
+}
+
+interface Project {
+  id: number;
+  name: string;
+  description: string;
+  image?: string;
+  tags: string[];
+  type: string;
+  liveLink?: string;
+  githubLink?: string;
+  details: ProjectDetails;
+}
+
+// ----- Centralized Data / Config -----
+const ALL_FILTER = "All" as const;
+const filterButtons = [
+  ALL_FILTER,
+  "Work Projects",
+  "Personal Projects",
+] as const;
+
+const projects: Project[] = [
   {
     id: 1,
     name: "Geospatial Data Platform",
@@ -131,193 +163,220 @@ const projects = [
   },
 ];
 
-const filterButtons = ["All", "Work Projects", "Personal Projects"];
+// ----- Animation Variants (constant, reused) -----
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
-export default function ProjectsShowcase() {
-  const [filter, setFilter] = useState("All");
-  const [openModal, setOpenModal] = useState(false);
-  const [currentProject, setCurrentProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
+// ----- Custom Hook -----
+function useFilteredProjects(all: Project[], filter: string) {
+  return useMemo(() => {
+    if (filter === ALL_FILTER) return all;
+    return all.filter((p) => p.type === filter);
+  }, [all, filter]);
+}
 
-  const filteredProjects = projects.filter((project) =>
-    filter === "All" ? true : project.type === filter,
-  );
+// ----- Presentational / Atomic Components -----
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-  };
-
-  const handleDetailsClick = (project: (typeof projects)[0]) => {
-    setCurrentProject(project);
-    setOpenModal(true);
-  };
-
-  return (
-    <section
-      id="projects"
-      className="w-full py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+interface FilterBarProps {
+  currentFilter: string;
+  setFilter: (f: string) => void;
+}
+const FilterBar: React.FC<FilterBarProps> = memo(
+  ({ currentFilter, setFilter }) => (
+    <div
+      className="flex flex-wrap gap-3 mt-6 overflow-x-auto"
+      data-cy="filter-bar"
     >
-      <div className="container px-8 md:px-12 lg:px-16">
-        <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
-          <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-[var(--dark-color)]">
-            My Work & Creations
-          </h2>
-          <p className="max-w-[900px] text-lg md:text-xl text-[var(--accent-color)]">
-            A selection of professional and personal projects showcasing my
-            full-stack capabilities and problem-solving skills.
-          </p>
-          <div className="flex flex-wrap gap-3 mt-6">
-            {filterButtons.map((btn) => (
-              <Button
-                key={btn}
-                variant={filter === btn ? "default" : "outline"}
-                onClick={() => setFilter(btn)}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200
-                  ${
-                    filter === btn
-                      ? "bg-[var(--dark-color)] text-[var(--primary-bg)] hover:bg-[color:var(--dark-color)/0.9]"
-                      : "border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--highlight-color)] hover:text-[var(--dark-color)]"
-                  }`}
-              >
-                {btn}
-              </Button>
-            ))}
+      {filterButtons.map((btn) => (
+        <Button
+          key={btn}
+          variant={currentFilter === btn ? "default" : "outline"}
+          onClick={() => setFilter(btn)}
+          aria-pressed={currentFilter === btn}
+          aria-label={`Filter by ${btn}`}
+          className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0
+          ${
+            currentFilter === btn
+              ? "bg-[var(--dark-color)] text-[var(--primary-bg)] hover:bg-[color:var(--dark-color)/0.9]"
+              : "border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--highlight-color)] hover:text-[var(--dark-color)]"
+          }`}
+          data-cy={`filter-btn-${btn.replace(/\s+/g, "-").toLowerCase()}`}
+        >
+          {btn}
+        </Button>
+      ))}
+    </div>
+  ),
+);
+FilterBar.displayName = "FilterBar";
+
+interface ProjectCardProps {
+  project: Project;
+  onDetails: (proj: Project) => void;
+}
+const ProjectCard: React.FC<ProjectCardProps> = memo(
+  ({ project, onDetails }) => (
+    <motion.div
+      key={project.id}
+      variants={itemVariants}
+      data-cy={`project-card-${project.id}`}
+    >
+      <Card className="relative overflow-hidden rounded-xl group bg-[var(--primary-bg)] border-[color:var(--highlight-color)] shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] glassmorphism-card">
+        <div className="relative w-full h-48 overflow-hidden">
+          <Image
+            src={project.image || "/placeholder.svg"}
+            alt={project.name}
+            layout="fill"
+            objectFit="cover"
+            className="transition-transform duration-500 group-hover:scale-110"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-[color:var(--dark-color)/0.6] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <h3 className="text-xl font-bold text-[var(--primary-bg)] text-center px-4">
+              {project.name}
+            </h3>
           </div>
         </div>
+        <CardContent className="p-6 space-y-4">
+          <h3 className="text-xl font-bold text-[var(--dark-color)]">
+            {project.name}
+          </h3>
+          <p className="text-[var(--accent-color)] text-sm line-clamp-2">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="bg-[var(--highlight-color)] text-[var(--dark-color)] text-xs px-3 py-1 rounded-full font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <div className="flex gap-3 mt-4 flex-col sm:flex-row">
+            <Button
+              variant="outline"
+              size="sm"
+              className="flex-1 border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
+              onClick={() => onDetails(project)}
+              aria-label={`View details of ${project.name}`}
+              data-cy={`details-btn-${project.id}`}
+            >
+              <Search className="h-4 w-4 mr-2" /> Details
+            </Button>
+            {project.liveLink && (
+              <Link
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1"
+              >
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
+                  aria-label={`View live demo of ${project.name}`}
+                  data-cy={`live-demo-btn-${project.id}`}
+                >
+                  <ExternalLink className="h-4 w-4 mr-2" /> Live Demo
+                </Button>
+              </Link>
+            )}
+            {project.githubLink && (
+              <Link
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1"
+              >
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
+                  aria-label={`View GitHub repo for ${project.name}`}
+                  data-cy={`github-btn-${project.id}`}
+                >
+                  <Github className="h-4 w-4 mr-2" /> GitHub
+                </Button>
+              </Link>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  ),
+);
+ProjectCard.displayName = "ProjectCard";
 
-        <motion.div
-          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
+interface ProjectModalProps {
+  project: Project | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+const ProjectModal: React.FC<ProjectModalProps> = memo(
+  ({ project, isOpen, onClose }) => {
+    // Guard: if no project, render minimal placeholder in modal
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent
+          className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto bg-[var(--primary-bg)] text-[var(--dark-color)] p-6 rounded-lg shadow-xl border-[color:var(--highlight-color)/0.5] glassmorphism-card"
+          data-cy="project-modal"
         >
-          {filteredProjects.map((project) => (
-            <motion.div key={project.id} variants={itemVariants}>
-              <Card className="relative overflow-hidden rounded-xl group bg-[var(--primary-bg)] border-[color:var(--highlight-color)] shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] glassmorphism-card">
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.name}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-[color:var(--dark-color)/0.6] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <h3 className="text-xl font-bold text-[var(--primary-bg)] text-center px-4">
-                      {project.name}
-                    </h3>
-                  </div>
-                </div>
-                <CardContent className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-[var(--dark-color)]">
-                    {project.name}
-                  </h3>
-                  <p className="text-[var(--accent-color)] text-sm line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-[var(--highlight-color)] text-[var(--dark-color)] text-xs px-3 py-1 rounded-full font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
-                      onClick={() => handleDetailsClick(project)} // Open modal on click
-                    >
-                      <Search className="h-4 w-4 mr-2" /> Details
-                    </Button>
-                    <Link
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
-                      >
-                        <ExternalLink className="h-4 w-4 mr-2" /> Live Demo
-                      </Button>
-                    </Link>
-                    <Link
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                    >
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
-                      >
-                        <Github className="h-4 w-4 mr-2" /> GitHub
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* Project Details Modal */}
-      <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="sm:max-w-[800px] bg-[var(--primary-bg)] text-[var(--dark-color)] p-6 rounded-lg shadow-xl border-[color:var(--highlight-color)/0.5] glassmorphism-card">
           <DialogHeader>
-            <DialogTitle className="text-3xl font-bold text-[var(--dark-color)]">
-              {currentProject?.name || "Project Details"}
+            <DialogTitle
+              className="text-3xl font-bold text-[var(--dark-color)]"
+              data-cy="modal-title"
+            >
+              {project?.name || "Project Details"}
             </DialogTitle>
-            <DialogDescription className="text-[var(--accent-color)] text-lg mt-2">
-              {currentProject?.description || "Loading project details..."}
+            <DialogDescription
+              className="text-[var(--accent-color)] text-lg mt-2"
+              data-cy="modal-description"
+            >
+              {project?.description || "Loading project details..."}
             </DialogDescription>
           </DialogHeader>
-          {currentProject && (
+          {!project && (
+            <p className="text-[var(--accent-color)]">No project selected.</p>
+          )}
+          {project && (
             <div className="grid gap-6 py-4">
               <div className="relative w-full h-64 rounded-md overflow-hidden">
                 <Image
-                  src={currentProject.image || "/placeholder.svg"}
-                  alt={currentProject.name}
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.name}
                   layout="fill"
                   objectFit="cover"
+                  sizes="100vw"
                 />
               </div>
               <div>
                 <h4 className="text-xl font-semibold mb-2 text-[var(--dark-color)]">
                   Full Description
                 </h4>
-                <p className="text-[var(--accent-color)] leading-relaxed">
-                  {currentProject.details.fullDescription}
+                <p
+                  className="text-[var(--accent-color)] leading-relaxed"
+                  data-cy="modal-full-description"
+                >
+                  {project.details.fullDescription}
                 </p>
               </div>
               <div>
                 <h4 className="text-xl font-semibold mb-2 text-[var(--dark-color)]">
                   Key Metrics & Impact
                 </h4>
-                <ul className="list-disc list-inside space-y-1 text-[var(--accent-color)]">
-                  {currentProject.details.metrics.map((metric, index) => (
+                <ul
+                  className="list-disc list-inside space-y-1 text-[var(--accent-color)]"
+                  data-cy="modal-metrics"
+                >
+                  {project.details.metrics.map((metric, index) => (
                     <li key={index}>{metric}</li>
                   ))}
                 </ul>
@@ -326,8 +385,11 @@ export default function ProjectsShowcase() {
                 <h4 className="text-xl font-semibold mb-2 text-[var(--dark-color)]">
                   Technologies Used
                 </h4>
-                <div className="flex flex-wrap gap-3">
-                  {currentProject.tags.map((tag) => (
+                <div
+                  className="flex flex-wrap gap-3"
+                  data-cy="modal-tech-stack"
+                >
+                  {project.tags.map((tag) => (
                     <Badge
                       key={tag}
                       className="bg-[var(--highlight-color)] text-[var(--dark-color)] px-3 py-1 rounded-full font-medium"
@@ -335,7 +397,7 @@ export default function ProjectsShowcase() {
                       {tag}
                     </Badge>
                   ))}
-                  {currentProject.details.techStackIcons?.map((tech) => (
+                  {project.details.techStackIcons?.map((tech) => (
                     <div
                       key={tech.name}
                       className="flex items-center gap-2 bg-[var(--highlight-color)] text-[var(--dark-color)] px-3 py-1 rounded-full font-medium"
@@ -355,26 +417,30 @@ export default function ProjectsShowcase() {
             </div>
           )}
           <DialogFooter className="flex flex-col sm:flex-row sm:justify-end gap-3 pt-4">
-            {currentProject?.liveLink && (
+            {project?.liveLink && (
               <Link
-                href={currentProject.liveLink}
+                href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="w-full sm:w-auto bg-[var(--dark-color)] text-[var(--primary-bg)] hover:bg-[color:var(--dark-color)/0.9]">
+                <Button
+                  className="w-full sm:w-auto bg-[var(--dark-color)] text-[var(--primary-bg)] hover:bg-[color:var(--dark-color)/0.9]"
+                  data-cy="modal-live-demo-btn"
+                >
                   <ExternalLink className="h-4 w-4 mr-2" /> Live Demo
                 </Button>
               </Link>
             )}
-            {currentProject?.githubLink && (
+            {project?.githubLink && (
               <Link
-                href={currentProject.githubLink}
+                href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button
                   variant="outline"
                   className="w-full sm:w-auto border-[color:var(--accent-color)] text-[var(--dark-color)] hover:bg-[var(--accent-color)] hover:text-[var(--primary-bg)] bg-transparent"
+                  data-cy="modal-github-btn"
                 >
                   <Github className="h-4 w-4 mr-2" /> GitHub
                 </Button>
@@ -382,14 +448,109 @@ export default function ProjectsShowcase() {
             )}
             <Button
               variant="outline"
-              onClick={() => setOpenModal(false)}
+              onClick={onClose}
               className="w-full sm:w-auto border-[color:var(--highlight-color)] text-[var(--dark-color)] hover:bg-[color:var(--highlight-color)] hover:text-[var(--dark-color)] bg-transparent"
+              data-cy="modal-close-btn"
             >
               Close
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
+    );
+  },
+);
+ProjectModal.displayName = "ProjectModal";
+
+// ----- Main Container / Orchestrator -----
+export default function ProjectsShowcase() {
+  const [filter, setFilter] = useState<string>(ALL_FILTER);
+  const [openModal, setOpenModal] = useState(false);
+  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+
+  const filteredProjects = useFilteredProjects(projects, filter);
+
+  const handleDetailsClick = useCallback((project: Project) => {
+    setCurrentProject(project);
+    setOpenModal(true);
+  }, []);
+
+  // Observability: lifecycle marks for profiling
+  useEffect(() => {
+    performance.mark("projects-showcase-mounted");
+    return () => {
+      performance.mark("projects-showcase-unmounted");
+      performance.measure(
+        "ProjectsShowcase lifecycle",
+        "projects-showcase-mounted",
+        "projects-showcase-unmounted",
+      );
+    };
+  }, []);
+
+  // Guard: no data
+  if (!projects || projects.length === 0) {
+    return (
+      <section
+        id="projects"
+        className="w-full py-12 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+        data-cy="projects-section"
+      >
+        <div className="container px-4">
+          <p className="text-center">No projects available.</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section
+      id="projects"
+      className="w-full py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+      data-cy="projects-section"
+      aria-label="Projects showcase of work and personal creations"
+    >
+      <div className="container mx-auto px-4 md:px-12 lg:px-16">
+        <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
+          <h2
+            className="text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[var(--dark-color)]"
+            data-cy="projects-heading"
+          >
+            My Work & Creations
+          </h2>
+          <p
+            className="max-w-[900px] text-lg md:text-xl text-[var(--accent-color)]"
+            data-cy="projects-subheading"
+          >
+            A selection of professional and personal projects showcasing my
+            full-stack capabilities and problem-solving skills.
+          </p>
+          <FilterBar currentFilter={filter} setFilter={setFilter} />
+        </div>
+
+        <motion.div
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          data-cy="projects-grid"
+        >
+          {filteredProjects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onDetails={handleDetailsClick}
+            />
+          ))}
+        </motion.div>
+
+        <ProjectModal
+          project={currentProject}
+          isOpen={openModal}
+          onClose={() => setOpenModal(false)}
+        />
+      </div>
     </section>
   );
 }
