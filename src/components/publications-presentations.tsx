@@ -36,43 +36,88 @@ type EventItem = PublicationEvent | PresentationEvent;
 const EVENTS: EventItem[] = [
   {
     id: 1,
-    type: "Publication",
-    title: "Scalable Geospatial Data Processing with Serverless Architectures",
-    journal: "Journal of Cloud Computing",
-    date: "October 2023",
-    link: "#", // Placeholder for paper link
+    type: "Presentation",
+    title:
+      "Bridging Science and Community: Advancing Web Mapping Tools for Arctic Research",
+    event: "AGU Fall Meeting 2024",
+    date: "December 2024",
+    link: "#",
     abstract:
-      "This paper explores the design and implementation of a serverless architecture for efficient processing of large-scale geospatial datasets, leveraging AWS Lambda and S3.",
+      "Co-authored with Craig E. Tweedie, Santiago Hoyos, Allison G. Gaylord, Mauricio Barba, and Ryan P. Cody. Advanced web mapping tools for Arctic research, fostering collaboration between scientists and communities.",
   },
   {
     id: 2,
     type: "Presentation",
-    title: "Building Real-time Web Applications with WebSockets and Node.js",
-    event: "DevConnect Conference",
-    date: "May 2023",
-    link: "#", // Placeholder for slides link
+    title: "MentorStudio: Amplifying Diverse Voices via Virtual Mentors",
+    event: "Zenodo Publication",
+    date: "July 2023",
+    link: "https://doi.org/10.5281/ZENODO.8226275",
     abstract:
-      "A presentation on best practices for developing real-time features in web applications using WebSockets, Node.js, and Redis for message brokering.",
+      "Developed a platform enabling mentors to create video-based virtual agents, expanding access for underserved STEM students.",
   },
   {
     id: 3,
-    type: "Publication",
-    title: "Optimizing Database Performance in Microservices Environments",
-    journal: "International Journal of Software Engineering",
-    date: "February 2022",
-    link: "#", // Placeholder for paper link
+    type: "Presentation",
+    title:
+      "Fostering Collaboration, Access, and Public Interest through Open Science and Web Mapping",
+    event: "AGU Fall Meeting 2023",
+    date: "December 2023",
+    link: "#",
     abstract:
-      "An in-depth analysis of various strategies for optimizing database interactions and schema design within a distributed microservices architecture.",
+      "Presented ARMAP, a web mapping tool enhancing Arctic research collaboration, science planning, and outreach.",
   },
   {
     id: 4,
     type: "Presentation",
-    title: "Introduction to Containerization with Docker and Kubernetes",
-    event: "Local Tech Meetup",
-    date: "November 2021",
-    link: "#", // Placeholder for slides link
+    title:
+      "Designing a Rapid Adaptive Content Registry (RACR) for Adaptive Learning",
+    event: "Conference 2022",
+    date: "2022",
+    link: "#",
     abstract:
-      "A beginner-friendly introduction to containerization concepts, demonstrating how Docker and Kubernetes can streamline development and deployment workflows.",
+      "Developed RACR to streamline content integration for adaptive learning systems, using machine learning to tag and analyze educational content.",
+  },
+  {
+    id: 5,
+    type: "Presentation",
+    title:
+      "Improving Interoperability within the Arctic Research Data Life Cycle",
+    event: "AGU Fall Meeting 2022",
+    date: "December 2022",
+    link: "#",
+    abstract:
+      "Presented secure, interoperable data services enhancing Arctic research data sharing and visualization tools like ARMAP and AOV.",
+  },
+  {
+    id: 6,
+    type: "Presentation",
+    title: "New Workflows Repurpose Geotagged Information to Improve Outreach",
+    event: "AGU Fall Meeting 2021",
+    date: "December 2021",
+    link: "#",
+    abstract:
+      "Enhanced ARMAP and AOV tools to improve outreach and engagement with Arctic communities through geotagged data and real-time updates.",
+  },
+  {
+    id: 7,
+    type: "Presentation",
+    title: "3D Viewers, Dashboard, and Data Services for Arctic Science",
+    event: "AGU Fall Meeting 2020",
+    date: "December 2020",
+    link: "#",
+    abstract:
+      "Enhanced ARMAP and AOV with real-time ship tracking, 3D viewers, and dashboards to improve Arctic research coordination and data access.",
+  },
+  {
+    id: 8,
+    type: "Presentation",
+    title:
+      "The Arctic Research Mapping Application and Arctic Observing Viewer Applications Support Earth Science Planning",
+    event: "AGU Fall Meeting 2019",
+    date: "December 2019",
+    link: "#",
+    abstract:
+      "Enhanced ARMAP and AOV with 3D models, GIS tools, and optimized backend performance to support Arctic research and data sharing.",
   },
 ];
 
@@ -108,8 +153,8 @@ const EventCard: React.FC<EventCardProps> = memo(({ event, index }) => {
   const variants = prefersReducedMotion
     ? { hidden: {}, visible: {} }
     : index % 2 === 0
-    ? baseLeftVariant
-    : baseRightVariant;
+      ? baseLeftVariant
+      : baseRightVariant;
 
   const isPublication = event.type === "Publication";
 
@@ -196,7 +241,7 @@ export default function PublicationsPresentations() {
       performance.measure(
         "PublicationsPresentations lifecycle",
         "publications-presentations-mounted",
-        "publications-presentations-unmounted"
+        "publications-presentations-unmounted",
       );
     };
   }, []);

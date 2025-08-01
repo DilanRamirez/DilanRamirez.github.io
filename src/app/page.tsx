@@ -21,7 +21,7 @@ export default function HomePage() {
         <header className="px-4 lg:px-6 h-14 flex items-center justify-between sticky top-0 z-50 bg-[color:var(--primary-bg)/0.8] backdrop-blur-md border-b border-[color:var(--highlight-color)/0.5]">
           <Link href="#" className="flex items-center gap-2 font-bold text-lg">
             <Code className="h-6 w-6 text-[color:var(--accent-color)]" />
-            <span>John Doe</span> {/* Replace with your name */}
+            <span>Dilan Ramirez</span> {/* Replace with your name */}
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link

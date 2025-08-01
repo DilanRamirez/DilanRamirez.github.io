@@ -46,9 +46,9 @@ const skillGroups: SkillGroup[] = [
     icon: Code,
     skills: [
       { name: "React", proficiency: 95, years: "5+" },
-      { name: "Next.js", proficiency: 90, years: "3+" },
+      { name: "Redux", proficiency: 90, years: "4+" },
       { name: "TypeScript", proficiency: 90, years: "4+" },
-      { name: "Tailwind CSS", proficiency: 95, years: "3+" },
+      { name: "Figma (UI/UX Design)", proficiency: 85, years: "3+" },
       { name: "HTML/CSS", proficiency: 98, years: "7+" },
     ],
   },
@@ -58,29 +58,29 @@ const skillGroups: SkillGroup[] = [
     skills: [
       { name: "Node.js", proficiency: 90, years: "5+" },
       { name: "Express.js", proficiency: 85, years: "4+" },
-      { name: "Python", proficiency: 80, years: "6+" },
-      { name: "Spring Boot", proficiency: 75, years: "2+" },
-      { name: "RESTful APIs", proficiency: 90, years: "5+" },
+      { name: "Python (ArcPy, Flask)", proficiency: 85, years: "6+" },
+      { name: "RESTful APIs / GraphQL", proficiency: 88, years: "4+" },
+      { name: "Microservices Architecture", proficiency: 85, years: "4+" },
     ],
   },
   {
-    name: "Cloud",
+    name: "Cloud & DevOps",
     icon: Cloud,
     skills: [
-      { name: "AWS (EC2, S3, Lambda, RDS)", proficiency: 90, years: "4+" },
+      { name: "AWS (EC2, Linux, IAM)", proficiency: 85, years: "3+" },
       { name: "Docker", proficiency: 85, years: "3+" },
-      { name: "Kubernetes", proficiency: 70, years: "1+" },
-      { name: "Serverless", proficiency: 88, years: "3+" },
+      { name: "CI/CD (GitHub Actions)", proficiency: 85, years: "3+" },
+      { name: "Sentry (Monitoring)", proficiency: 80, years: "2+" },
     ],
   },
   {
-    name: "DevOps & Databases",
+    name: "Databases & Geospatial",
     icon: GitBranch,
     skills: [
-      { name: "Git/GitHub", proficiency: 95, years: "7+" },
-      { name: "CI/CD (GitHub Actions)", proficiency: 80, years: "3+" },
-      { name: "PostgreSQL", proficiency: 85, years: "5+" },
+      { name: "SQL Server / PostgreSQL", proficiency: 85, years: "5+" },
       { name: "MongoDB", proficiency: 75, years: "3+" },
+      { name: "ArcGIS Pro / QGIS", proficiency: 90, years: "4+" },
+      { name: "ESRI JavaScript API", proficiency: 88, years: "4+" },
     ],
   },
 ];
@@ -88,27 +88,29 @@ const skillGroups: SkillGroup[] = [
 const certifications: Certification[] = [
   {
     id: 1,
-    name: "AWS Certified Solutions Architect - Associate",
+    name: "AWS Cloud Support Associate",
     issuer: "Amazon Web Services",
-    date: "Jan 2023",
-    badgeUrl: "",
-    verificationLink: "https://www.credly.com/badges/...", // Placeholder
+    date: "Jul 2025",
+    badgeUrl: "https://coursera.org/share/b1a876875b16077a0123c924daa8b5fc",
+    verificationLink:
+      "https://coursera.org/share/b1a876875b16077a0123c924daa8b5fc",
   },
   {
     id: 2,
-    name: "Certified Kubernetes Administrator (CKA)",
-    issuer: "Cloud Native Computing Foundation",
-    date: "Aug 2024",
-    badgeUrl: "",
-    verificationLink: "https://www.credly.com/badges/...", // Placeholder
+    name: "IBM Back-End Developer",
+    issuer: "IBM",
+    date: "Feb 2024",
+    badgeUrl: "https://coursera.org/share/188c35e04be2856d3b125160aaae0acb",
+    verificationLink:
+      "https://coursera.org/share/188c35e04be2856d3b125160aaae0acb",
   },
   {
-    id: 3,
-    name: "Professional Scrum Developer I",
-    issuer: "Scrum.org",
-    date: "Mar 2022",
+    id: 5,
+    name: "Going Places with Spatial Analysis",
+    issuer: "Esri",
+    date: "Feb 2024",
     badgeUrl: "",
-    verificationLink: "https://www.credly.com/badges/...", // Placeholder
+    verificationLink: "",
   },
 ];
 
@@ -204,7 +206,7 @@ const SkillGroupAccordionItem: React.FC<SkillGroupAccordionItemProps> = memo(
         </AccordionContent>
       </AccordionItem>
     </motion.div>
-  )
+  ),
 );
 SkillGroupAccordionItem.displayName = "SkillGroupAccordionItem";
 
@@ -213,6 +215,7 @@ interface CertificationCardProps {
 }
 const CertificationCard: React.FC<CertificationCardProps> = memo(({ cert }) => {
   const [isActive, setIsActive] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <motion.div
@@ -229,22 +232,8 @@ const CertificationCard: React.FC<CertificationCardProps> = memo(({ cert }) => {
       aria-label={`${cert.name} certification card`}
       data-cy={`cert-card-${cert.id}`}
     >
-      <Card className="bg-[var(--secondary-bg)] border-[color:var(--highlight-color)] shadow-md transition-all duration-300 hover:shadow-lg glassmorphism-card">
-        <CardContent className="flex items-center gap-4 p-6">
-          <div className="relative flex-shrink-0 w-20 h-20">
-            <Image
-              src={cert.badgeUrl || ""}
-              alt={`${cert.name} badge`}
-              fill
-              className="rounded-full object-contain"
-              sizes="80px"
-              onError={(e) => {
-                // silent fallback to placeholder if image fails
-                const target = e.currentTarget as HTMLImageElement;
-                target.src = "";
-              }}
-            />
-          </div>
+      <Card className="bg-[var(--primary-bg)] border-[color:var(--secondary-bg)] shadow-lg transition-all duration-300 hover:shadow-lg glassmorphism-card">
+        <CardContent className="flex items-center gap-0 p-4">
           <div className="flex-1">
             <CardTitle className="text-lg font-semibold text-[var(--dark-color)]">
               {cert.name}
@@ -261,7 +250,7 @@ const CertificationCard: React.FC<CertificationCardProps> = memo(({ cert }) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 5 }}
           transition={{ duration: 0.2 }}
-          className="absolute inset-0 bg-[color:var(--dark-color)/0.85] rounded-xl flex flex-col items-center justify-center p-4 text-[var(--primary-bg)] z-10"
+          className="absolute inset-0 bg-[var(--accent-color)] rounded-xl flex flex-col items-center justify-center p-4 text-[var(--primary-bg)] z-10"
           role="dialog"
           aria-label="Certification details overlay"
         >
@@ -301,7 +290,7 @@ export default function SkillsCertifications() {
       performance.measure(
         "SkillsCertifications lifecycle",
         "skills-certifications-mounted",
-        "skills-certifications-unmounted"
+        "skills-certifications-unmounted",
       );
     };
   }, []);

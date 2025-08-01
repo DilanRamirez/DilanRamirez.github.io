@@ -24,9 +24,9 @@ const TYPING_PHRASES = [
 // Typing animation hook: encapsulates typing/deleting logic and keeps component lean.
 function useTypingLoop(
   phrases: string[],
-  typingSpeed = 500,
+  typingSpeed = 50,
   pauseDuration = 1000,
-  initialDelay = 300
+  initialDelay = 300,
 ): string {
   const [displayText, setDisplayText] = useState("");
   const isDeletingRef = useRef(false);
@@ -43,7 +43,7 @@ function useTypingLoop(
       } else {
         charIndexRef.current = Math.min(
           current.length,
-          charIndexRef.current + 1
+          charIndexRef.current + 1,
         );
         setDisplayText(current.substring(0, charIndexRef.current));
       }
@@ -81,14 +81,14 @@ interface TypingSublineProps {
   "data-cy"?: string;
 }
 const TypingSubline: React.FC<TypingSublineProps> = memo(
-  ({ phrases, className = "", ...rest }) => {
+  ({ phrases, className = "text-center", ...rest }) => {
     const text = useTypingLoop(phrases);
     return (
-      <p className={className} aria-live="polite" {...rest}>
+      <p className={`${className} text-center`} aria-live="polite" {...rest}>
         {text}
       </p>
     );
-  }
+  },
 );
 TypingSubline.displayName = "TypingSubline";
 
@@ -157,7 +157,7 @@ const ParallaxBackground: React.FC<ParallaxBackgroundProps> = memo(
     const handleImageError = () => {
       setShowBackground(false);
       console.warn(
-        "Background image failed to load; hiding parallax background."
+        "Background image failed to load; hiding parallax background.",
       );
     };
 
@@ -180,7 +180,7 @@ const ParallaxBackground: React.FC<ParallaxBackgroundProps> = memo(
         />
       </motion.div>
     );
-  }
+  },
 );
 ParallaxBackground.displayName = "ParallaxBackground";
 
@@ -193,7 +193,7 @@ export default function HeroSection() {
     if (typeof window === "undefined") return;
     const touchMq = window.matchMedia("(hover: none)");
     const reducedMotionMq = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     );
     const update = () => {
       // disable parallax if device is touch-based or user prefers reduced motion
@@ -246,7 +246,7 @@ export default function HeroSection() {
         y.set(clientY - rect.top - rect.height / 2);
       });
     },
-    [x, y]
+    [x, y],
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -265,7 +265,7 @@ export default function HeroSection() {
       performance.measure(
         "HeroSection lifecycle",
         "hero-section-mounted",
-        "hero-section-unmounted"
+        "hero-section-unmounted",
       );
     };
   }, []);
@@ -300,7 +300,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="space-y-4">
+            <div className="space-y-4 text-center">
               <h1
                 className="text-6xl text-center font-extrabold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none text-[var(--dark-color)]"
                 data-cy="hero-headline"
@@ -309,7 +309,7 @@ export default function HeroSection() {
               </h1>
               <TypingSubline
                 phrases={TYPING_PHRASES}
-                className="max-w-[700px] text-center text-lg md:text-xl text-[var(--accent-color)] font-light"
+                className="max-w-[700px] text-center m-auto text-lg md:text-xl text-[var(--accent-color)] font-light"
                 data-cy="hero-subline"
               />
             </div>

@@ -12,7 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "John Doe - Full-Stack Software Engineer",
+  title: "Dilan Ramirez - Full-Stack Software Engineer",
   description:
     "Portfolio of a Full-Stack Software Engineer and Cloud Specialist.",
 };

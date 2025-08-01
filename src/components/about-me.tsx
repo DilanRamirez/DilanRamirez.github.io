@@ -2,7 +2,7 @@
 
 import React, { useEffect, memo } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Star } from "lucide-react";
+import { Briefcase, GraduationCap } from "lucide-react";
 
 // ----- Types -----
 interface TimelineMilestone {
@@ -14,22 +14,13 @@ interface TimelineMilestone {
 }
 
 // ----- Centralized Data / Config -----
+// ----- Centralized Data / Config -----
 const careerTimeline: TimelineMilestone[] = [
   {
-    year: "2025",
-    title: "Senior Full-Stack Engineer @ TechCorp",
+    year: "2021",
+    title: "Programmer Analyst I @ USC Institute for Creative Technologies",
     description:
-      "Leading development of next-gen cloud-native applications, focusing on AI integration and performance optimization.",
-    icon: (
-      <Star className="h-5 w-5 text-[var(--primary-bg)]" aria-hidden="true" />
-    ), // decorative
-    iconBg: "bg-[var(--dark-color)]",
-  },
-  {
-    year: "2022",
-    title: "Full-Stack Software Engineer @ Innovate Solutions",
-    description:
-      "Designed and implemented scalable microservices for a SaaS platform, improving system reliability and developer productivity.",
+      "Developed scalable AI-enhanced web applications for U.S. Army Research Office projects. Led UI/UX development with React and Node.js, implemented microservices, role-based authentication, Docker containerization, and authored 200+ automated tests.",
     icon: (
       <Briefcase
         className="h-5 w-5 text-[var(--primary-bg)]"
@@ -40,9 +31,9 @@ const careerTimeline: TimelineMilestone[] = [
   },
   {
     year: "2019",
-    title: "Software Developer @ Global Systems Inc.",
+    title: "Research Assistant @ University of Texas at El Paso",
     description:
-      "Contributed to the development of enterprise-level applications, specializing in frontend frameworks and API integrations.",
+      "Engineered geospatial databases, automated data pipelines with Python, and developed reusable React components for GIS applications. Published 7 npm packages used across Arctic research mapping projects and implemented CI/CD pipelines.",
     icon: (
       <Briefcase
         className="h-5 w-5 text-[var(--primary-bg)]"
@@ -52,10 +43,10 @@ const careerTimeline: TimelineMilestone[] = [
     iconBg: "bg-[var(--dark-color)]",
   },
   {
-    year: "2017",
-    title: "Graduated with B.S. in Computer Science",
+    year: "2021",
+    title: "Graduated with B.S. in Computer Science (Cum Laude)",
     description:
-      "University of Technology, focused on distributed systems and algorithms.",
+      "University of Texas at El Paso • Focused on distributed systems and algorithms • Graduated with 3.6 GPA and Cum Laude Honors.",
     icon: (
       <GraduationCap
         className="h-5 w-5 text-[var(--primary-bg)]"
@@ -107,62 +98,59 @@ const BioSection: React.FC = memo(() => (
       <span className="font-semibold text-[var(--dark-color)]">
         Full-Stack Software Engineer
       </span>{" "}
-      with over 7 years of experience building robust, scalable, and
-      user-centric web applications. My expertise spans across modern frontend
-      frameworks like{" "}
+      with over 5 years of experience building scalable web and{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        React and Next.js
+        geospatial applications
       </span>
-      , powerful backend technologies such as{" "}
+      . My expertise spans{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        Node.js and Python
-      </span>
-      , and extensive experience with{" "}
+        React, TypeScript, Node.js, and microservices
+      </span>{" "}
+      with strong proficiency in{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        AWS cloud services
+        CI/CD, Docker, and automated testing
       </span>
-      .
+      . I am AWS Cloud Support Associate certified and have hands-on experience
+      with{" "}
+      <span className="font-semibold text-[var(--dark-color)]">
+        EC2, Linux, and IAM
+      </span>{" "}
+      for deploying and troubleshooting cloud solutions.
     </p>
     <p
       className="text-lg text-[var(--accent-color)] leading-relaxed break-words"
       data-cy="bio-paragraph-2"
     >
-      I thrive on solving complex problems and am passionate about creating
-      efficient, maintainable, and high-performance software. My journey has
-      involved working on diverse projects, from{" "}
+      I thrive in{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        geospatial data platforms
+        agile environments
       </span>{" "}
-      to{" "}
+      and excel at transforming stakeholder requirements into high-impact
+      solutions. My journey includes contributions to{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        e-commerce microservices
-      </span>
-      , always with a focus on delivering tangible business value.
+        U.S. Army Research Office AI projects
+      </span>{" "}
+      and Arctic research mapping tools, blending{" "}
+      <span className="font-semibold text-[var(--dark-color)]">
+        cutting-edge technology
+      </span>{" "}
+      with real-world applications.
     </p>
     <ul
       className="list-disc list-inside space-y-2 text-lg text-[var(--accent-color)]"
       data-cy="bio-highlights"
     >
       <li>
-        <span className="font-semibold text-[var(--dark-color)]">
-          Key Highlight 1:
-        </span>{" "}
-        Led a team to migrate legacy systems to a serverless architecture,
-        reducing operational costs by 40%.
+        Led UI/UX and front-end development for AI-driven platforms under the
+        U.S. Army Research Office using React and Node.js.
       </li>
       <li>
-        <span className="font-semibold text-[var(--dark-color)]">
-          Key Highlight 2:
-        </span>{" "}
-        Developed a real-time analytics dashboard that improved data visibility
-        for stakeholders.
+        Engineered geospatial databases and automated pipelines using Python and
+        ArcPy, reducing deployment times by 99%.
       </li>
       <li>
-        <span className="font-semibold text-[var(--dark-color)]">
-          Key Highlight 3:
-        </span>{" "}
-        Mentored junior developers, fostering a collaborative and
-        growth-oriented team environment.
+        Published 7 npm packages supporting GIS applications and implemented
+        CI/CD pipelines for automated deployments.
       </li>
     </ul>
   </div>
@@ -187,7 +175,7 @@ const TimelineItem: React.FC<TimelineItemProps> = memo(
     >
       {/* Icon circle */}
       <div
-        className={`absolute -left-6 md:-left-8 top-0 flex items-center justify-center w-10 h-10 rounded-full ${milestone.iconBg} z-10 shadow-md ring-2 ring-white`}
+        className={`absolute -left-6 md:-left-13 top-0 flex items-center justify-center w-10 h-10 rounded-full ${milestone.iconBg} z-10 shadow-md ring-2 ring-white`}
         aria-hidden="true"
       >
         {milestone.icon}

@@ -364,7 +364,7 @@ export default function ContactFooter() {
           className="text-sm text-[var(--dark-color)] mb-2 sm:mb-0"
           data-cy="copyright"
         >
-          &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+          &copy; {new Date().getFullYear()} Dilan Ramirez. All rights reserved.
         </p>
         <SocialLinks />
       </footer>
