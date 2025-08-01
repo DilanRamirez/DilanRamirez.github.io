@@ -10,5 +10,5 @@ format:
 test-all:
 	test-lint && npm run format
 
-upload:
+deploy:
 	aws s3 sync ./out s3://dilan-ramirez-portfolio --delete

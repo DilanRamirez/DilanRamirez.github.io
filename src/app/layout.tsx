@@ -1,6 +1,8 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google"; // Import Poppins from next/font/google
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import { ThemeProvider } from "@/components/theme-provider";
 import "../app/globals.css"; // Import global styles
 
@@ -24,8 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable}`}>
-        {" "}
+      <body className={poppins.variable}>
+        <GoogleAnalytics
+          gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""}
+        />
+
         {/* Apply the font variable to the body */}
         <ThemeProvider
           attribute="class"
