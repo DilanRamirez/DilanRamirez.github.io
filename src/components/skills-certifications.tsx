@@ -17,7 +17,14 @@ import {
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
-import { Award, Cloud, Code, GitBranch, Server } from "lucide-react";
+import {
+  Award,
+  BrainCircuit,
+  Cloud,
+  Code,
+  GitBranch,
+  Server,
+} from "lucide-react";
 
 // ----- Types -----
 interface Skill {
@@ -39,68 +46,66 @@ interface Certification {
   verificationLink?: string;
 }
 
-// ----- Centralized Config / Data -----
+// Represents the skills, grouped by category, to be displayed.
 const skillGroups: SkillGroup[] = [
   {
     name: "Frontend",
     icon: Code,
     skills: [
-      { name: "React", proficiency: 95, years: "5+" },
-      { name: "Redux", proficiency: 90, years: "4+" },
+      { name: "React.js / Next.js", proficiency: 95, years: "5+" },
       { name: "TypeScript", proficiency: 90, years: "4+" },
+      { name: "Redux", proficiency: 90, years: "4+" },
+      { name: "Tailwind CSS", proficiency: 85, years: "3+" },
       { name: "Figma (UI/UX Design)", proficiency: 85, years: "4+" },
-      { name: "HTML/CSS", proficiency: 98, years: "6+" },
     ],
   },
   {
     name: "Backend",
     icon: Server,
     skills: [
-      { name: "Node.js", proficiency: 90, years: "5+" },
-      { name: "Express.js", proficiency: 85, years: "4+" },
-      { name: "Python", proficiency: 85, years: "6+" },
+      { name: "Node.js (Express.js)", proficiency: 90, years: "5+" },
+      { name: "Python (Flask, FastAPI)", proficiency: 88, years: "6+" },
       { name: "RESTful APIs / GraphQL", proficiency: 88, years: "4+" },
       { name: "Microservices Architecture", proficiency: 85, years: "4+" },
+    ],
+  },
+  {
+    name: "AI & Machine Learning",
+    icon: BrainCircuit, // Example icon
+    skills: [
+      { name: "Google Gemini", proficiency: 85, years: "2+" },
+      {
+        name: "Retrieval-Augmented Generation (RAG)",
+        proficiency: 80,
+        years: "2+",
+      },
+      { name: "FAISS", proficiency: 78, years: "2+" },
+      { name: "Text Embeddings", proficiency: 80, years: "2+" },
     ],
   },
   {
     name: "Cloud & DevOps",
     icon: Cloud,
     skills: [
-      { name: "AWS (EC2, Linux, IAM, Lambda)", proficiency: 80, years: "2+" },
-      { name: "Amazon EC2", proficiency: 60, years: "2+" },
-      { name: "AWS Lambda", proficiency: 85, years: "2+" },
-      { name: "Amazon S3", proficiency: 88, years: "2+" },
+      { name: "AWS (EC2, Lambda, S3, DynamoDB)", proficiency: 85, years: "3+" },
       {
-        name: "IAM (Identity and Access Management)",
-        proficiency: 85,
+        name: "Azure (Functions, Container Apps)",
+        proficiency: 80,
         years: "2+",
       },
-      { name: "AWS Budgets", proficiency: 80, years: "2+" },
-      { name: "AWS Cost Explorer", proficiency: 80, years: "2+" },
-
-      // Azure additions
-      { name: "Azure Static Web Apps", proficiency: 80, years: "2+" },
-      { name: "Azure Cost Management", proficiency: 80, years: "2+" },
-      { name: "Azure Container Apps", proficiency: 78, years: "2+" },
-      { name: "Azure Container Registry", proficiency: 78, years: "2+" },
-      { name: "Azure Functions", proficiency: 80, years: "2+" },
-
-      // Docker and CI/CD
       { name: "Docker", proficiency: 85, years: "4+" },
       { name: "CI/CD (GitHub Actions)", proficiency: 85, years: "4+" },
-      { name: "Sentry (Monitoring)", proficiency: 80, years: "2+" },
+      { name: "Sentry / Cypress / Pytest", proficiency: 80, years: "3+" },
     ],
   },
   {
     name: "Databases & Geospatial",
     icon: GitBranch,
     skills: [
-      { name: "SQL Server / PostgreSQL", proficiency: 85, years: "4+" },
-      { name: "MongoDB", proficiency: 75, years: "4+" },
-      { name: "Amazon DynamoDB", proficiency: 80, years: "2+" },
-      { name: "ArcGIS Pro / QGIS", proficiency: 90, years: "5+" },
-      { name: "ESRI JavaScript API", proficiency: 88, years: "5+" },
+      { name: "PostgreSQL / SQL Server", proficiency: 85, years: "5+" },
+      { name: "MongoDB / DynamoDB", proficiency: 80, years: "3+" },
+      { name: "ArcGIS Pro / Esri JS API", proficiency: 90, years: "5+" },
+      { name: "ArcPy / Google Earth Engine", proficiency: 85, years: "4+" },
     ],
   },
 ];
@@ -108,6 +113,14 @@ const skillGroups: SkillGroup[] = [
 const certifications: Certification[] = [
   {
     id: 1,
+    name: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "In Progress (Expected Aug 2025)",
+    badgeUrl: "", // Add URL when available
+    verificationLink: "", // Add URL when available
+  },
+  {
+    id: 2,
     name: "AWS Cloud Support Associate",
     issuer: "Amazon Web Services",
     date: "Jul 2025",
@@ -116,21 +129,13 @@ const certifications: Certification[] = [
       "https://coursera.org/share/b1a876875b16077a0123c924daa8b5fc",
   },
   {
-    id: 2,
+    id: 3,
     name: "IBM Back-End Developer",
     issuer: "IBM",
     date: "Feb 2024",
     badgeUrl: "https://coursera.org/share/188c35e04be2856d3b125160aaae0acb",
     verificationLink:
       "https://coursera.org/share/188c35e04be2856d3b125160aaae0acb",
-  },
-  {
-    id: 5,
-    name: "Going Places with Spatial Analysis",
-    issuer: "Esri",
-    date: "Feb 2024",
-    badgeUrl: "",
-    verificationLink: "",
   },
 ];
 

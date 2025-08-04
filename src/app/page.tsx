@@ -10,8 +10,8 @@ import ProjectsShowcase from "@/components/projects-showcase";
 import SkillsCertifications from "@/components/skills-certifications";
 import PublicationsPresentations from "@/components/publications-presentations";
 import AboutMe from "@/components/about-me";
-import ContactFooter from "@/components/contact-footer";
 import { ThemeProvider } from "@/components/theme-provider"; // Assuming you have a theme provider
+import ContactFooter from "@/components/contact-footer";
 
 export default function HomePage() {
   return (
@@ -42,20 +42,7 @@ export default function HomePage() {
             >
               About
             </Link>
-            <Link
-              href="#contact"
-              className="text-sm font-medium hover:text-[color:var(--accent-color)] transition-colors"
-            >
-              Contact
-            </Link>
           </nav>
-          <Button
-            variant="outline"
-            className="hidden md:inline-flex bg-transparent"
-          >
-            <Mail className="h-4 w-4 mr-2" />
-            Hire Me
-          </Button>
         </header>
 
         <main className="flex-1">
@@ -65,7 +52,6 @@ export default function HomePage() {
           <SkillsCertifications />
           <PublicationsPresentations />
         </main>
-
         <ContactFooter />
       </div>
     </ThemeProvider>

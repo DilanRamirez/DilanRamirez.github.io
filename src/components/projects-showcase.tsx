@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useCallback, memo, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { ExternalLink, Github, Search } from "lucide-react";
@@ -16,6 +16,9 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import armapImage from "@/assets/armap.png";
+import sabbathImage from "@/assets/sabbath+.png";
+import aircoeeImage from "@/assets/AIRCOEE.png";
 
 // ----- Types -----
 interface TechIcon {
@@ -33,7 +36,7 @@ interface Project {
   id: number;
   name: string;
   description: string;
-  image?: string;
+  image?: string | StaticImageData;
   tags: string[];
   type: string;
   liveLink?: string;
@@ -51,29 +54,183 @@ const filterButtons = [
 
 const projects: Project[] = [
   {
-    id: 4,
-    name: "AI-Powered Chatbot",
+    id: 2,
+    name: "U.S. Army AI Training Platform (AIRCOEE)",
     description:
-      "Developed a conversational AI chatbot using OpenAI's GPT-3 and a custom knowledge base, deployed on a serverless platform.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Python", "Flask", "OpenAI API", "AWS Lambda"],
-    type: "Personal Projects",
-    liveLink: "#",
-    githubLink: "#",
+      "Led front-end development for a U.S. Army project, delivering a scalable UI/UX with React and integrating LLM analysis capabilities.",
+    image: aircoeeImage,
+    tags: ["React", "TypeScript", "Node.js", "LLM", "Cypress", "Docker"],
+    type: "Work Projects",
+    liveLink: "",
+    githubLink: "",
     details: {
       fullDescription:
-        "Created an intelligent conversational AI chatbot capable of answering user queries based on a custom knowledge base. The backend was built with Python and Flask, integrating with OpenAI's GPT-3 API for natural language understanding and generation. Deployed as a serverless application on AWS Lambda, ensuring scalability and cost-efficiency. The chatbot successfully reduced customer support queries by 20% through automated and accurate responses.",
+        "As Lead Front-End Developer for the U.S. Army's AIRCOEE project, delivered a scalable UI/UX using React and TypeScript and integrated LLM analysis capabilities for AI-powered content revision. Drove user adoption across 6 Army training centers, achieving an 80%+ survey response rate and 5.67/6.0 user satisfaction. Increased system reliability by authoring 200+ end-to-end tests (Cypress) and championed code quality by leading peer reviews and managing CI/CD pipelines with Docker.",
       metrics: [
-        "Reduced customer support queries by 20%",
-        "90% accuracy in responses",
-        "Scalable serverless deployment",
-        "Integrated with multiple internal APIs",
+        "Achieved 5.67/6.0 user satisfaction rating",
+        "80%+ survey response rate across 6 Army centers",
+        "Authored 200+ end-to-end tests",
+        "Integrated LLM for content generation & revision",
       ],
       techStackIcons: [
-        { name: "Python", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Flask", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "OpenAI API", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "AWS Lambda", icon: "/placeholder.svg?height=30&width=30" },
+        {
+          name: "React",
+          icon: "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB",
+        },
+        {
+          name: "TypeScript",
+          icon: "https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white",
+        },
+        {
+          name: "Cypress",
+          icon: "https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white",
+        },
+        {
+          name: "Docker",
+          icon: "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white",
+        },
+      ],
+    },
+  },
+  {
+    id: 3,
+    name: "Geospatial Research Applications (ARMAP & AOV)",
+    description:
+      "Developed foundational npm packages and automated data pipelines for Arctic research web mapping applications, supporting over 100 researchers.",
+    image: armapImage,
+    tags: ["Python", "ArcPy", "npm", "React", "SQL Server", "CI/CD"],
+    type: "Work Projects",
+    liveLink: "https://armapgeoservices.battelle-aro.org/ARMAP/",
+    githubLink: "",
+    details: {
+      fullDescription:
+        "Developed and published 7 foundational npm packages to extend the capabilities of Esri's core widgets, introducing novel features not available in the official API. Engineered and maintained high-performance SQL Server Enterprise Geodatabases, supporting 114 unique NSF-sponsored projects. Reduced map service deployment times by 99% by automating data pipelines with Python and ArcPy.",
+      metrics: [
+        "Reduced new feature development time by 90%",
+        "Reduced map deployment time by 99%",
+        "Supported 114 unique NSF-sponsored projects",
+        "Published 7 npm packages with novel features",
+      ],
+      techStackIcons: [
+        {
+          name: "Python",
+          icon: "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white",
+        },
+        {
+          name: "React",
+          icon: "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB",
+        },
+        {
+          name: "SQL Server",
+          icon: "https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white",
+        },
+        {
+          name: "npm",
+          icon: "https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white",
+        },
+      ],
+    },
+  },
+  {
+    id: 1,
+    name: "Full-Stack AI Learning Platform (Sabbath+)",
+    description:
+      "Architected an AI-driven web application using Next.js, FastAPI, and a RAG pipeline with Google Gemini to enhance interactive study.",
+    image: sabbathImage,
+    tags: [
+      "Next.js",
+      "FastAPI",
+      "Python",
+      "Google Gemini",
+      "RAG",
+      "Docker",
+      "AWS",
+      "Azure",
+    ],
+    type: "Personal Projects",
+    liveLink: "https://gentle-meadow-08f54890f.6.azurestaticapps.net/welcome",
+    githubLink: "https://github.com/DilanRamirez/ai-sabbath-school-frontend",
+    details: {
+      fullDescription:
+        "Architected and developed a comprehensive, AI-driven web application from the ground up to enhance interactive Bible study for a global user base. The system features a RAG pipeline with Google Gemini and FAISS for contextual semantic search and is deployed on a multi-cloud architecture leveraging Azure for services and AWS (S3, DynamoDB) for data.",
+      metrics: [
+        "Reduced LLM response latency by 80%",
+        "Multi-cloud deployment (AWS & Azure)",
+        "Full-stack architecture with Next.js & FastAPI",
+        "Implemented RAG for contextual AI responses",
+      ],
+      techStackIcons: [
+        {
+          name: "Next.js",
+          icon: "https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white",
+        },
+        {
+          name: "FastAPI",
+          icon: "https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white",
+        },
+        {
+          name: "Google Gemini",
+          icon: "https://img.shields.io/badge/Google_Gemini-8E77D5?style=for-the-badge&logo=google-gemini&logoColor=white",
+        },
+        {
+          name: "Docker",
+          icon: "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white",
+        },
+        {
+          name: "AWS",
+          icon: "https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=FF9900",
+        },
+        {
+          name: "Azure",
+          icon: "https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white",
+        },
+      ],
+    },
+  },
+  {
+    id: 6,
+    name: "AI-Enhanced Flashcard Application",
+    description:
+      "A comprehensive, AI-enhanced flashcard application designed to provide a personalized and effective learning experience.",
+    image:
+      "https://github.com/DilanRamirez/flashcard-app/blob/main/preview.png?raw=true",
+    tags: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Google Gemini",
+      "Vercel AI SDK",
+    ],
+    type: "Personal Projects",
+    liveLink: "https://thankful-wave-0eb7d500f.2.azurestaticapps.net/",
+    githubLink: "https://github.com/DilanRamirez/flashcard-app",
+    details: {
+      fullDescription:
+        "This project is a smart study companion that not only presents flashcards but actively helps users learn by adapting to their progress and providing intelligent feedback. It features multiple study views, personalized learning analytics tracked via localStorage, and AI-powered quiz generation and explanations for mistakes using Google Gemini via the Vercel AI SDK.",
+      metrics: [
+        "Personalized study plans based on performance",
+        "AI-generated quizzes with plausible distractors",
+        "AI-powered explanations for incorrect answers",
+        "Multiple study views (Single, Grid, List)",
+        "Comprehensive interaction and performance tracking",
+      ],
+      techStackIcons: [
+        {
+          name: "Next.js",
+          icon: "https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white",
+        },
+        {
+          name: "React",
+          icon: "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB",
+        },
+        {
+          name: "Tailwind CSS",
+          icon: "https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white",
+        },
+        {
+          name: "Google Gemini",
+          icon: "https://img.shields.io/badge/Google_Gemini-8E77D5?style=for-the-badge&logo=google-gemini&logoColor=white",
+        },
       ],
     },
   },
@@ -99,11 +256,61 @@ const projects: Project[] = [
         "Fully responsive, mobile-friendly controls",
       ],
       techStackIcons: [
-        { name: "Next.js", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "TypeScript", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "React", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "Tailwind CSS", icon: "/placeholder.svg?height=30&width=30" },
-        { name: "lucide-react", icon: "/placeholder.svg?height=30&width=30" },
+        {
+          name: "Next.js",
+          icon: "https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white",
+        },
+        {
+          name: "TypeScript",
+          icon: "https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white",
+        },
+        {
+          name: "React",
+          icon: "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB",
+        },
+        {
+          name: "Tailwind CSS",
+          icon: "https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white",
+        },
+      ],
+    },
+  },
+  {
+    id: 4,
+    name: "AI-Powered Chatbot",
+    description:
+      "Developed a conversational AI chatbot using OpenAI's GPT-3 and a custom knowledge base, deployed on a serverless platform.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["Python", "Flask", "OpenAI API", "AWS Lambda"],
+    type: "Personal Projects",
+    liveLink: "#",
+    githubLink: "#",
+    details: {
+      fullDescription:
+        "Created an intelligent conversational AI chatbot capable of answering user queries based on a custom knowledge base. The backend was built with Python and Flask, integrating with OpenAI's GPT-3 API for natural language understanding and generation. Deployed as a serverless application on AWS Lambda, ensuring scalability and cost-efficiency. The chatbot successfully reduced customer support queries by 20% through automated and accurate responses.",
+      metrics: [
+        "Reduced customer support queries by 20%",
+        "90% accuracy in responses",
+        "Scalable serverless deployment",
+        "Integrated with multiple internal APIs",
+      ],
+      techStackIcons: [
+        {
+          name: "Python",
+          icon: "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white",
+        },
+        {
+          name: "Flask",
+          icon: "https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white",
+        },
+        {
+          name: "OpenAI",
+          icon: "https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white",
+        },
+        {
+          name: "AWS Lambda",
+          icon: "https://img.shields.io/badge/AWS_Lambda-FF9900?style=for-the-badge&logo=aws-lambda&logoColor=white",
+        },
       ],
     },
   },
@@ -355,13 +562,6 @@ const ProjectModal: React.FC<ProjectModalProps> = memo(
                       key={tech.name}
                       className="flex items-center gap-2 bg-[var(--highlight-color)] text-[var(--dark-color)] px-3 py-1 rounded-full font-medium"
                     >
-                      <Image
-                        src={tech.icon || "/placeholder.svg"}
-                        alt={tech.name}
-                        width={20}
-                        height={20}
-                        className="object-contain"
-                      />
                       <span>{tech.name}</span>
                     </div>
                   ))}
@@ -459,11 +659,11 @@ export default function ProjectsShowcase() {
   return (
     <section
       id="projects"
-      className="w-full py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+      className="w-full py-12 px-5 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
       data-cy="projects-section"
       aria-label="Projects showcase of work and personal creations"
     >
-      <div className="container mx-auto px-4 md:px-12 lg:px-16">
+      <div className="container mx-auto md:px-12 lg:px-16">
         <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
           <h2
             className="text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[var(--dark-color)]"
