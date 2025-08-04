@@ -11,4 +11,4 @@ test-all:
 	test-lint && npm run format
 
 deploy:
-	aws s3 sync ./out s3://dilan-ramirez-portfolio --delete
+	npm run build && aws s3 sync ./out s3://dilan-ramirez-portfolio --delete

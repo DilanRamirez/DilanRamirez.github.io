@@ -211,25 +211,27 @@ const SkillGroupAccordionItem: React.FC<SkillGroupAccordionItemProps> = memo(
       variants={cardVariants}
       transition={{ delay: index * 0.1 }}
     >
-      <AccordionItem
-        value={group.name}
-        className="border-b border-[color:var(--highlight-color)/0.5]"
-      >
-        <AccordionTrigger className="flex items-center gap-3 py-4 text-xl font-semibold text-[var(--dark-color)] hover:no-underline">
-          <group.icon
-            className="h-6 w-6 text-[var(--accent-color)]"
-            aria-hidden="true"
-          />
-          {group.name}
-        </AccordionTrigger>
-        <AccordionContent className="pt-4 pb-6">
-          <div className="grid gap-4">
-            {group.skills.map((skill) => (
-              <SkillBar key={skill.name} skill={skill} />
-            ))}
-          </div>
-        </AccordionContent>
-      </AccordionItem>
+      <div className="bg-[var(--primary-bg)] rounded-lg md:p-2 lg:p-2 sm:p-2 mb-5">
+        <AccordionItem
+          value={group.name}
+          className="border-b border-[color:var(--highlight-color)/0.5]"
+        >
+          <AccordionTrigger className="flex items-center gap-3 py-4 text-xl font-semibold text-[var(--dark-color)] hover:no-underline">
+            <group.icon
+              className="h-6 w-6 text-[var(--accent-color)]"
+              aria-hidden="true"
+            />
+            {group.name}
+          </AccordionTrigger>
+          <AccordionContent className="pt-4 pb-6">
+            <div className="grid gap-4">
+              {group.skills.map((skill) => (
+                <SkillBar key={skill.name} skill={skill} />
+              ))}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </div>
     </motion.div>
   ),
 );
@@ -338,11 +340,20 @@ export default function SkillsCertifications() {
   return (
     <section
       id="skills"
-      className="w-full px-5 py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)] px-5 "
+      className="relative z-0 w-full px-5 py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
       data-cy="skills-section"
       aria-label="Skills and certifications section"
     >
-      <div className="container mx-auto max-w-[1250px] px-4 sm:px-8 md:px-12 lg:px-16">
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 -z-10 pointer-events-none text-neutral-300 dark:text-neutral-700"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "radial-gradient(currentColor 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+      <div className="relative z-10 container mx-auto max-w-[1250px] px-4 sm:px-8 md:px-12 lg:px-16">
         <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
           <h2
             className="text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[var(--dark-color)]"

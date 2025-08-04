@@ -121,7 +121,7 @@ const HeroCTAs: React.FC = memo(() => {
           boxShadow: "0 0 15px rgba(138, 138, 138, 0.5)",
         }}
         whileTap={{ scale: 0.95 }}
-        className="rounded-md"
+        className="rounded-md z-10"
       >
         <Link
           href="/resume.pdf"
@@ -279,14 +279,21 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen overflow-hidden text-[var(--dark-color)] bg-[var(--primary-bg)] flex items-center justify-center"
+      className="relative z-0 w-full min-h-screen overflow-hidden text-[var(--dark-color)] bg-[var(--primary-bg)] flex items-center justify-center"
       onMouseMove={enableParallax ? handleMouseMove : undefined}
       onMouseLeave={enableParallax ? handleMouseLeave : undefined}
       aria-label="Hero section introducing the software engineer"
       data-cy="hero-section"
     >
-      <ParallaxBackground x={x} y={y} />
-
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 -z-10 pointer-events-none text-neutral-300 dark:text-neutral-700"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "radial-gradient(currentColor 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
       <div className="container mx-auto max-w-[1250px] px-8 md:px-12 lg:px-16 relative z-10">
         <div className="flex flex-col items-center justify-center gap-8">
           <motion.div

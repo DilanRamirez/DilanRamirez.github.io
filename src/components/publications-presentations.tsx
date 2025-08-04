@@ -266,11 +266,20 @@ export default function PublicationsPresentations() {
   return (
     <section
       id="publications"
-      className="w-full px-5 py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+      className="relative z-0 w-full px-5 py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
       aria-label="Publications & Presentations section"
       data-cy="publications-section"
     >
-      <div className="container px-4 md:px-12 lg:px-16 mx-auto">
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 -z-10 pointer-events-none text-neutral-300 dark:text-neutral-700"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "radial-gradient(currentColor 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+      <div className="relative z-10 container px-4 md:px-12 lg:px-16 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
           <h2
             className="text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[var(--dark-color)]"

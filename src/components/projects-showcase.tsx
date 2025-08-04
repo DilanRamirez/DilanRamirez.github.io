@@ -659,11 +659,20 @@ export default function ProjectsShowcase() {
   return (
     <section
       id="projects"
-      className="w-full py-12 px-5 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+      className="relative z-0 w-full py-12 px-5 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
       data-cy="projects-section"
       aria-label="Projects showcase of work and personal creations"
     >
-      <div className="container mx-auto md:px-12 lg:px-16">
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 -z-10 pointer-events-none text-neutral-200 dark:text-neutral-700"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "radial-gradient(currentColor 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+      <div className="relative z-10 container mx-auto md:px-12 lg:px-16">
         <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
           <h2
             className="text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-[var(--dark-color)]"

@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       // Add any other badge domains here
     ],
   },
-  // output: "export", // Enables static HTML export
+  output: "export", // Enables static HTML export
 };
 
 export default nextConfig;

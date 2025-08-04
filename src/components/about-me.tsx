@@ -89,7 +89,7 @@ const SectionHeader: React.FC = memo(() => (
 SectionHeader.displayName = "SectionHeader";
 
 const BioSection: React.FC = memo(() => (
-  <div className="space-y-6" data-cy="bio-section">
+  <div className="space-y-6 z-10" data-cy="bio-section">
     <p
       className="text-lg text-[var(--accent-color)] leading-relaxed break-words"
       data-cy="bio-paragraph-1"
@@ -98,59 +98,59 @@ const BioSection: React.FC = memo(() => (
       <span className="font-semibold text-[var(--dark-color)]">
         Full-Stack Software Engineer
       </span>{" "}
-      with over 5 years of experience building scalable web and{" "}
+      with over 5 years of experience designing, deploying, and scaling
+      sophisticated web, geospatial, and{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        geospatial applications
+        AI-driven applications
       </span>
-      . My expertise spans{" "}
+      . My expertise is in the{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        React, TypeScript, Node.js, and microservices
+        React, Next.js, and Node.js
       </span>{" "}
-      with strong proficiency in{" "}
+      ecosystem, with a proven track record of building resilient{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        CI/CD, Docker, and automated testing
+        microservices architectures
+      </span>{" "}
+      on{" "}
+      <span className="font-semibold text-[var(--dark-color)]">
+        AWS and Azure
       </span>
-      . I am AWS Cloud Support Associate certified and have hands-on experience
-      with{" "}
-      <span className="font-semibold text-[var(--dark-color)]">
-        EC2, Linux, and IAM
-      </span>{" "}
-      for deploying and troubleshooting cloud solutions.
+      .
     </p>
     <p
       className="text-lg text-[var(--accent-color)] leading-relaxed break-words"
       data-cy="bio-paragraph-2"
     >
-      I thrive in{" "}
+      I thrive on translating complex stakeholder requirements into high-impact,
+      production-ready solutions. My journey includes leading front-end
+      development for the{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        agile environments
-      </span>{" "}
-      and excel at transforming stakeholder requirements into high-impact
-      solutions. My journey includes contributions to{" "}
+        U.S. Army Research Office
+      </span>
+      , architecting multi-cloud AI platforms, and developing innovative
+      geospatial tools for{" "}
       <span className="font-semibold text-[var(--dark-color)]">
-        U.S. Army Research Office AI projects
+        NSF-sponsored
       </span>{" "}
-      and Arctic research mapping tools, blending{" "}
-      <span className="font-semibold text-[var(--dark-color)]">
-        cutting-edge technology
-      </span>{" "}
-      with real-world applications.
+      Arctic research.
     </p>
     <ul
       className="list-disc list-inside space-y-2 text-lg text-[var(--accent-color)]"
       data-cy="bio-highlights"
     >
       <li>
-        Led UI/UX and front-end development for AI-driven platforms under the
-        U.S. Army Research Office using React and Node.js.
+        Architected a full-stack AI platform with a RAG pipeline using Google
+        Gemini and FastAPI, reducing LLM latency by 80%.
       </li>
       <li>
-        Engineered geospatial databases and automated pipelines using Python and
-        ArcPy, reducing deployment times by 99%.
+        Led front-end development for a U.S. Army AI training platform,
+        integrating LLM capabilities and achieving a 5.67/6.0 user satisfaction
+        rating.
       </li>
       <li>
-        Published 7 npm packages supporting GIS applications and implemented
-        CI/CD pipelines for automated deployments.
+        Developed 7 foundational npm packages that extended Esri&apos;s GIS
+        widgets with novel features, cutting new feature development time by
+        90%.
       </li>
     </ul>
   </div>
@@ -243,11 +243,20 @@ export default function AboutMe() {
   return (
     <section
       id="about"
-      className="w-full px-5 py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
+      className="relative w-full px-5 py-12 md:py-24 lg:py-32 bg-[var(--primary-bg)] text-[var(--dark-color)]"
       data-cy="about-section"
       aria-label="About me section with bio and career timeline"
     >
-      <div className="container mx-auto max-w-[1250px] px-4 sm:px-8 md:px-12 lg:px-16">
+      {/* Dot grid background */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none text-neutral-200 dark:text-neutral-700"
+        aria-hidden="true"
+        style={{
+          backgroundImage: "radial-gradient(currentColor 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+      <div className="relative z-10 container mx-auto max-w-[1250px] px-4 sm:px-8 md:px-12 lg:px-16">
         <SectionHeader />
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <motion.div

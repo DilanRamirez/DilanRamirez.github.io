@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Mail, Code } from "lucide-react";
+import { Code } from "lucide-react";
 
 // Client components for interactivity
 import HeroSection from "@/components/hero-section";
@@ -16,7 +15,9 @@ import ContactFooter from "@/components/contact-footer";
 export default function HomePage() {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      <div className="flex flex-col min-h-[100dvh] bg-[var(--primary-bg)] text-[var(--dark-color)]">
+      {/* Dot grid background */}
+
+      <div className="relative z-0 flex flex-col min-h-[100dvh] bg-[var(--primary-bg)] text-[var(--dark-color)] overflow-hidden">
         {/* Header - Simple navigation, can be expanded */}
         <header className="px-4 lg:px-6 h-14 flex items-center justify-between sticky top-0 z-50 bg-[color:var(--primary-bg)/0.8] backdrop-blur-md border-b border-[color:var(--highlight-color)/0.5]">
           <Link href="#" className="flex items-center gap-2 font-bold text-lg">
